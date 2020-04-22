@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/btn_show_alert_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="弹出警告对话框" />
+
+    <Button
+        android:id="@+id/btn_show_confirm_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_show_alert_dialog"
+        android:layout_below="@+id/btn_show_alert_dialog"
+        android:text="弹出确认对话框" />
+
+    <Button
+        android:id="@+id/btn_show_custom_content_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_show_confirm_dialog"
+        android:layout_below="@+id/btn_show_confirm_dialog"
+        android:text="弹出自定义内容对话框" />
+
+    <Button
+        android:id="@+id/btn_show_progress_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_show_custom_content_dialog"
+        android:layout_below="@+id/btn_show_custom_content_dialog"
+        android:text="弹出带进度对话框" />
+
+</RelativeLayout>

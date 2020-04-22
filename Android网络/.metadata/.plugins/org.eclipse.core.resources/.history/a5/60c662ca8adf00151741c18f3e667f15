@@ -1,0 +1,19 @@
+<%@ page language="java"
+	import java.util.List.*;
+	contentType="text/xml; charset=utf-8"
+    pageEncoding="utf-8"%>
+    
+<% 
+	List<Flight> flights = new ArrayList<Flight>();
+%>    
+    
+<flights>
+	<flight>
+		<id></id>
+		<number></number>
+		<from></from>
+		<to></to>
+		<price></price>
+		<date></date>
+	</flight>
+</flights>

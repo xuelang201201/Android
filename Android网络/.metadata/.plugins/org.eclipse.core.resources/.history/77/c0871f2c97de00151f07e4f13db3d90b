@@ -1,0 +1,22 @@
+package com.tarena.socket;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Service {
+	public static void main(String[] args) {
+		ServerSocket ss;
+		try {
+			ss = new ServerSocket(8888);
+			Socket socket = ss.accept();
+			System.out.println(socket.getInetAddress());
+			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+			dos.writeUTF("客官，来点儿什么？");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

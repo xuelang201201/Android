@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>index.html</title>
+<style type="text/css">
+#div {
+	width: 200px;
+	height: 200px;
+	background-color: deepskyblue;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+}
+</style>
+<script type="text/javascript">
+	// 供Android原生代码调用
+	function updateDiv() {
+		var w = Math.floor(Math.random() * 200) + 100 + "px";
+		var h = Math.floor(Math.random() * 200) + 100 + "px";
+		var div = document.getElementById("div");
+		div.style.width = w;
+		div.style.height = h;
+		// 把背景颜色改为随机颜色
+		var colors = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+		var color = "#";
+		for (i = 0; i < 6; i++) {
+			color += colors[Math.floor(Math.random()*colors.length)];
+		}
+		div.style.backgroundColor = color;
+	}
+</script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+</html>

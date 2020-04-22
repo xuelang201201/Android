@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;cn.tedu.android_day09_animation&apos; to &apos;cn.tedu.android_day10_animation&apos;&#x0D;&#x0A;- Original project: &apos;android_day10_animation&apos;&#x0D;&#x0A;- Original element: &apos;android_day10_animation/src/cn.tedu.android_day09_animation&apos;&#x0D;&#x0A;- Renamed element: &apos;android_day10_animation/src/cn.tedu.android_day10_animation&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;cn.tedu.android_day09_animation&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;cn.tedu.android_day09_animation" name="cn.tedu.android_day10_animation" qualified="false" references="true" stamp="1457765118738" textual="false" version="1.0"/>
+</session>

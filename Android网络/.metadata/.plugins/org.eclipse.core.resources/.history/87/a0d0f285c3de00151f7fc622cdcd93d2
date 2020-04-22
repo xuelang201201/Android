@@ -1,0 +1,8 @@
+package cn.tedu.chat;
+
+/**
+ * 聊天室的服务端程序
+ */
+public class ChatServer {
+	
+}

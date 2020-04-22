@@ -1,0 +1,29 @@
+package cn.tedu.musiconline.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+import cn.tedu.musiconline.R;
+import cn.tedu.musiconline.biz.MusicBiz;
+import cn.tedu.musiconline.util.GlobalConsts;
+
+public class MainActivity extends Activity {
+	
+	private ListView lvMusics;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		setViews();
+		// 启动异步任务，发送请求，获取音乐列表
+		String url = GlobalConsts.BASEURL + "loadMusics.jsp";
+		MusicBiz biz = new MusicBiz(); 
+		biz.execute(url); // 执行异步任务
+	}
+
+	private void setViews() {
+		
+	}
+}

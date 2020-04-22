@@ -1,0 +1,24 @@
+package com.tarena.socket;
+
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.net.Socket;
+
+public class Client {
+	public static void main(String[] args) {
+		// 连接服务端
+		String ip = "172.16.44.131";
+		try {
+			// 构造方法中自动建立连接
+			// 连接成功后返回socket
+			Socket socket = new Socket(ip, 8888);
+			// 获取输入流
+			DataInputStream dis = new DataInputStream(socket.getInputStream());
+			String line = dis.readUTF();
+			System.out.println("Server:" + line);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

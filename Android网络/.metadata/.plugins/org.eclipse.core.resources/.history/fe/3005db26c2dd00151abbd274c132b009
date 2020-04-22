@@ -1,0 +1,19 @@
+package cn.tedu.viewpager_fragment;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+
+public class MainActivity extends Activity {
+	
+	private ViewPager vpViewPager;
+	private PagerAdapter adapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		vpViewPager = (ViewPager) findViewById(R.id.vp_view_pager);
+	}
+}

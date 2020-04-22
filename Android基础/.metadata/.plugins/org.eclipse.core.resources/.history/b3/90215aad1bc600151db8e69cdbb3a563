@@ -1,0 +1,30 @@
+package cn.tedu.tab_menu;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+
+	private RadioGroup rgTabMenu;
+	private TextView tvContent;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		rgTabMenu = (RadioGroup)findViewById(R.id.rg_tab_menu);
+		tvContent = (TextView)findViewById(R.id.tv_content);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}

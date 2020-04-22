@@ -1,0 +1,43 @@
+package cn.tedu.progress;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ProgressBar;
+
+public class MainActivity extends Activity implements OnClickListener {
+	
+	private ProgressBar pbProgress;
+	private Button btnAddProgress;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		pbProgress = (ProgressBar) findViewById(R.id.pb_progress);
+		btnAddProgress = (Button) findViewById(R.id.btn_add_progress);
+		
+		btnAddProgress.setOnClickListener(this);
+	}
+
+	private int progress;
+	
+	@Override
+	public void onClick(View v) {
+		//点击按钮自动增加进度
+		
+		
+		
+		
+		//点击按钮增加进度
+		/*progress += 5;
+		pbProgress.setProgress(progress);
+		
+		if(progress >= 100) {
+			btnAddProgress.setEnabled(false);
+		}*/
+	}
+}

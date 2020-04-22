@@ -1,0 +1,45 @@
+package cn.tedu.weather.adapter;
+
+import java.util.List;
+
+import cn.tedu.weather.entity.MyWeather.Result.Data.Weather;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+public class WeatherAdapter extends BaseAdapter {
+
+	private Context context;
+	private List<Weather> weathers;
+
+	public WeatherAdapter(Context context, List<Weather> weathers) {
+		super();
+		this.context = context;
+		this.weathers = weathers;
+	}
+
+	@Override
+	public int getCount() {
+		return weathers.size();
+	}
+
+	@Override
+	public Weather getItem(int position) {
+		return getItem(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		if (convertView == null) {
+			
+		}
+		return null;
+	}
+
+}

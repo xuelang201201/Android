@@ -1,0 +1,60 @@
+package cn.tedu.listview_arrayadapter;
+
+import java.util.ArrayList;
+import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class MainActivity extends Activity {
+	private ListView lvContacts;//ÄÜprivate¾Íprivate£¬³ı·ÇÓĞ³ä×ãµÄÀíÓÉ
+	private ArrayAdapter<String> adapter; //Ä¬ÈÏÖµnull
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		lvContacts = (ListView) findViewById(R.id.lv_contacts);
+		Context context = this;
+		int textViewResourceId = R.layout.contact_item; //ÁĞ±íÄ£°å
+		
+		List<String> contacts = new ArrayList<String>(); //Êı¾İÔ´
+		contacts.add("Ã·Î÷");
+		contacts.add("ÄÚÂí¶û");
+		contacts.add("ËÕÑÇÀ×Ë¹");
+		contacts.add("¹şÎ¬");
+		contacts.add("ÒÁÄùË¹Ëş");
+		contacts.add("ÂŞÄÉ¶û¶à");
+		contacts.add("±´¶û");
+		contacts.add("±¾ÔóÂí");
+		contacts.add("ÒÁ²¼");
+		contacts.add("¶òÆë¶û");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("µÏÂêÀûÑÇ");
+		contacts.add("µÏ°ÍÀ­");
+		contacts.add("²©¸ñ°Í");
+		contacts.add("¸ñ²ß");
+		contacts.add("ÄÂÀÕ");
+		contacts.add("°Â°ÍÃ·Ñî");
+		contacts.add("ÂŞÒÁË¹");
+		contacts.add("É£ÇĞË¹");
+		contacts.add("²¼·ë");
+		contacts.add("");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		contacts.add("°¢¿üÂŞ");
+		
+		adapter = new ArrayAdapter<String>(context, textViewResourceId, contacts);
+		lvContacts.setAdapter(adapter); //ÏÔÊ¾ÁĞ±í
+	}
+}

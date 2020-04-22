@@ -1,0 +1,156 @@
+package cn.tedu.tab_menu_2.ui;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import cn.tedu.tab_menu_2.R;
+import cn.tedu.tab_menu_2.frag.DealFragment;
+import cn.tedu.tab_menu_2.frag.MoreFragment;
+import cn.tedu.tab_menu_2.frag.MyFragment;
+import cn.tedu.tab_menu_2.frag.NearbyFragment;
+
+public class MainActivity extends FragmentActivity {
+	private Button btnTabMenuDeal;
+	private Button btnTabMenuNearby;
+	private Button btnTabMenuMy;
+	private Button btnTabMenuMore;
+	private FrameLayout flContainer;
+	private FragmentPagerAdapter adapter;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		btnTabMenuDeal = (Button) findViewById(R.id.btn_tab_menu_deal);
+		btnTabMenuNearby = (Button) findViewById(R.id.btn_tab_menu_nearby);
+		btnTabMenuMy = (Button) findViewById(R.id.btn_tab_menu_my);
+		btnTabMenuMore = (Button) findViewById(R.id.btn_tab_menu_more);
+		flContainer = (FrameLayout) findViewById(R.id.fl_container);
+
+		InnerOnClickListener listener = new InnerOnClickListener();
+
+		btnTabMenuDeal.setOnClickListener(listener);
+		btnTabMenuNearby.setOnClickListener(listener);
+		btnTabMenuMy.setOnClickListener(listener);
+		btnTabMenuMore.setOnClickListener(listener);
+
+		setTabMenuSelected(btnTabMenuDeal);
+		
+		adapter = new InnerPagerAdapter(getSupportFragmentManager());
+	}
+
+	private class InnerPagerAdapter extends FragmentPagerAdapter {
+
+		public InnerPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			Fragment frag = null;
+			switch (position) {
+			case 0:
+				frag = new DealFragment();
+				break;
+
+			case 1:
+				frag = new NearbyFragment();
+				break;
+				
+			case 2:
+				frag = new MyFragment();
+				break;
+				
+			case 3:
+				frag = new MoreFragment();
+				break;
+			}
+			return frag;
+		}
+
+		@Override
+		public int getCount() {
+			return 4;
+		}
+		
+	}
+	
+	/**
+	 * 选中底部菜单中的某项
+	 * @param btn 被点击的按钮的对象
+	 */
+	 private void setTabMenuSelected(Button btn) {
+		 btnTabMenuDeal.setSelected(false);
+		 btnTabMenuNearby.setSelected(false);
+		 btnTabMenuMy.setSelected(false);
+		 btnTabMenuMore.setSelected(false);
+
+		 btn.setSelected(true);
+	 }
+
+	 private class InnerOnClickListener implements View.OnClickListener {
+
+		 @Override
+		 public void onClick(View view) {
+			 int position = 0;
+			 switch (view.getId()) {
+			 case R.id.btn_tab_menu_deal:
+				 setTabMenuSelected(btnTabMenuDeal);
+				 break;
+
+			 case R.id.btn_tab_menu_nearby:
+				 setTabMenuSelected(btnTabMenuNearby);
+				 position = 1;
+				 break;
+
+			 case R.id.btn_tab_menu_my:
+				 setTabMenuSelected(btnTabMenuMy);
+				 position = 2;
+				 break;
+
+			 case R.id.btn_tab_menu_more:
+				 setTabMenuSelected(btnTabMenuMore);
+				 position = 3;
+				 break;
+			 }
+			 
+			 loadFragment(position);
+		 }
+
+		 /**
+		  * 上次(显示新的Fragment时)显示的Fragment
+		  */
+		 private Object lastFragment;
+		 /**
+		  * 上次(显示新的Fragment时)显示的Fragment的位置
+		  */
+		 private int lastPosition;
+		 
+		 private void loadFragment(int position) {
+			// 判断此前是否存在Fragment
+			if (lastFragment != null) {
+				// 容器中已经有其他的Fragment，则移除
+				adapter.destroyItem(flContainer, lastPosition, lastFragment);
+			}
+			
+			// 初始化需要被显示的内容
+			Object fragment = adapter.instantiateItem(flContainer, position);
+			// 将被显示的内容设置为容器中主要显示的内容
+			adapter.setPrimaryItem(flContainer, 0, fragment);
+			// 完成容器显示的更新
+			adapter.finishUpdate(flContainer);
+			
+			// 记录下当前最新显示的Fragment的信息
+			lastFragment = fragment;
+			lastPosition = position;
+		}
+
+	 }
+
+}

@@ -1,0 +1,57 @@
+package com.tarena.socket;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server {
+	public static void main(String[] args) {
+		// 启动服务端
+		try {
+			ServerSocket ss = new ServerSocket(8888);
+			while (true) {
+				// 阻塞等待连接，当有连接到来是返回socket
+				Socket socket = ss.accept();
+				new 
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	static class WorkThread extends Thread {
+		private Socket socket;
+		public WorkThread (Socket socket) {
+			this.socket = socket;
+		}
+		
+		@Override
+		public void run() {
+			System.out.println(socket.getInetAddress());
+			// 向客户端输出能容
+			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+			dos.writeUTF("客官，来点什么？");
+			dos.flush();
+			// 读取客户端的内容
+			DataInputStream dis = new DataInputStream(socket.getInputStream());
+			while (true) {
+				String line = dis.readUTF();
+				if (line.equals("不吃了！")) {
+					break;
+				}
+				dos.writeUTF("木有" + line + ", 换一个？");
+				dos.flush();
+			}
+
+			dos.writeUTF("一路走好！");
+			dos.flush();
+			dos.close();
+			dis.close();
+			ss.close();
+			socket.close();
+		}
+	}
+}

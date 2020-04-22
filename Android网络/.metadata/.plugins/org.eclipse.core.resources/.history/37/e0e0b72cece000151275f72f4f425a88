@@ -1,0 +1,58 @@
+package cn.tedu.android_day03_ems;
+
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class EmpAdapter extends BaseAdapter {
+
+	private List<Emp> emps;
+	private Context context;
+	private LayoutInflater inflater;
+	
+	public EmpAdapter(Context context, List<Emp> emps) {
+		this.context = context;
+		this.emps = emps;
+		this.inflater = LayoutInflater.from(context);
+	}
+	
+
+	@Override
+	public int getCount() {
+		return emps.size();
+	}
+
+	@Override
+	public Emp getItem(int position) {
+		return emps.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return emps.get(position).getId();
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		inflater.inflate(R.layout.emp_item, null);
+		if (convertView == null) {
+			holder = new ViewHolder();
+			holder.tvAddEmpId = (TextView) convertView.findViewById(R.id.tv_id);
+		}
+		return null;
+	}
+
+	class ViewHolder {
+		TextView tvAddEmpId;
+		TextView tvAddEmpName;
+		TextView tvAddEmpAge;
+		TextView tvAddEmpSalary;
+		TextView tvAddEmpGender;
+	}
+}

@@ -1,0 +1,133 @@
+package cn.tedu.tab_menu.ui;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.RadioGroup;
+import cn.tedu.tab_menu.R;
+import cn.tedu.tab_menu.frag.DealFragment;
+import cn.tedu.tab_menu.frag.MoreFragment;
+import cn.tedu.tab_menu.frag.MyFragment;
+import cn.tedu.tab_menu.frag.NearbyFragment;
+
+public class MainActivity extends FragmentActivity implements OnPageChangeListener {
+
+	private RadioGroup rgTabMenu;
+	private ViewPager vpContainer;
+	private FragmentPagerAdapter adapter;
+	//private TextView tvContent;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		vpContainer = (ViewPager) findViewById(R.id.vp_container);
+		rgTabMenu = (RadioGroup) findViewById(R.id.rg_tab_menu);
+		//tvContent = (TextView) findViewById(R.id.tv_content);
+		
+		InnerOnCheckedChangeListener listener = new InnerOnCheckedChangeListener();
+		rgTabMenu.setOnCheckedChangeListener(listener);
+		
+		adapter = new InnerPagerAdapter(getSupportFragmentManager());
+		vpContainer.setAdapter(adapter);
+	}
+
+	private class InnerPagerAdapter extends FragmentPagerAdapter {
+
+		public InnerPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			Fragment frag = null;
+			switch (position) {
+			case 0:
+				frag = new DealFragment();
+				break;
+
+			case 1:
+				frag = new NearbyFragment();
+				break;
+			
+			case 2:
+				frag = new MyFragment();
+				break;
+				
+			case 3:
+				frag = new MoreFragment();
+				break;
+			}
+			return frag;
+		}
+
+		@Override
+		public int getCount() {
+			return 4;
+		}
+		
+	}
+	
+	private class InnerOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
+
+		@Override
+		public void onCheckedChanged(RadioGroup group, int checkedId) {
+			int itemIndex = 0;
+			switch (checkedId) {
+			case R.id.rb_tab_menu_deal:
+				//tvContent.setText("团购");
+				itemIndex = 0;
+				break;
+
+			case R.id.rb_tab_menu_nearby:
+				//tvContent.setText("附近");
+				itemIndex = 1;
+				break;
+
+			case R.id.rb_tab_menu_my:
+				//tvContent.setText("我的");
+				itemIndex = 2;
+				break;
+
+			case R.id.rb_tab_menu_more:
+				//tvContent.setText("更多");
+				itemIndex = 3;
+				break;
+			}
+			vpContainer.setCurrentItem(itemIndex);
+		}
+	}
+
+	@Override
+	public void onPageSelected(int position) {
+		int checkId = R.id.rb_tab_menu_deal;
+		switch (position) {
+		case 1:
+			checkId = R.id.rb_tab_menu_nearby;
+			break;
+
+		case 2:
+			checkId = R.id.rb_tab_menu_my;
+			break;
+			
+		case 3:
+			checkId = R.id.rb_tab_menu_more;
+			break;
+		}
+		rgTabMenu.check(checkId);
+	}
+	
+	
+	@Override
+	public void onPageScrollStateChanged(int arg0) {
+	}
+	
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+	}
+}

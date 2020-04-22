@@ -1,0 +1,10 @@
+package entity;
+
+public class Flight {
+	private int id;
+	private String number;
+	private String from;
+	private String to;
+	private double price;
+	private String date;
+}

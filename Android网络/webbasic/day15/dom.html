@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dom.html</title>
+<script type="text/javascript">
+	function doClick() {
+		//把所有的图片src属性都换掉 
+		var imgs = document.getElementsByTagName("img");
+		for (i = 0; i < imgs.length; i++) {
+			var img = imgs[i];
+			if (img.src.indexOf("fbb.jpg") >= 0) {
+				//修改img标签的src属性
+				img.src = "../images/hgr.jpg";
+			} else {
+				img.src = "../images/fbb.jpg";
+			}
+			//修改css样式设置width
+			img.style.width = "200px";
+			img.style.border = "1px solid gray";
+			img.style.padding = "2px";
+			img.style.marginBottom = "3px";
+		}
+	}
+
+	//操作标签文本
+	function doClick2() {
+		var e = document.getElementById("h1");
+		//给h1的内容设置
+		e.innerHTML = "答：<a href='http://www.csdn.net'>上CSDN！";
+	}
+
+	//点击文本框（焦点获取）后把文本框中的内容清空
+	function doFocus() {
+		var input = document.getElementById("search");
+		if (input.value == "锅碗瓢盆") {
+			input.value = "";
+		}
+	}
+	
+	function doBlur() {
+		var input = document.getElementById("search");
+		if (input.value == "") {
+			input.value = "锅碗瓢盆";
+		}
+	}
+</script>
+</head>
+<body>
+	搜索商品：
+	<input onfocus="doFocus()" id="search" type="text" value="锅碗瓢盆"
+		onblur="doBlur()">
+	<br />
+	<br />
+	<input onclick="doClick()" type="button" value="点我有惊喜">
+	<br />
+	<br />
+	<input onclick="doClick2()" type="button" value="点我有答案">
+	<br />
+	<br />
+
+	<h1 id="h1">怎么学好JavaScript呢？</h1>
+	<br />
+	<br />
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+	<img src="../images/fbb.jpg">
+</body>
+</html>

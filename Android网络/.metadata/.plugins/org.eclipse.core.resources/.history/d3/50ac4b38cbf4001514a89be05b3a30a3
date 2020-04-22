@@ -1,0 +1,5 @@
+package cn.tedu.myy.entity;
+
+public class PageModule {
+	
+}

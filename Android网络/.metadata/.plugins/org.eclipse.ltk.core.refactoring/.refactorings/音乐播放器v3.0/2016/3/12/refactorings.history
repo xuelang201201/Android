@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;cn.tedu.music_player_3.dal&apos; to &apos;网络版音乐播放器/src/cn.tedu.musiconline&apos;&#x0D;&#x0A;- Original project: &apos;音乐播放器v3.0&apos;&#x0D;&#x0A;- Destination element: &apos;网络版音乐播放器/src/cn.tedu.musiconline&apos;&#x0D;&#x0A;- Original element: &apos;音乐播放器v3.0/src/cn.tedu.music_player_3.dal&apos;" description="Copy package" destination="=网络版音乐播放器/src&lt;cn.tedu.musiconline" element1="/src&lt;cn.tedu.music_player_3.dal" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1457852265500" version="1.0"/>
+</session>

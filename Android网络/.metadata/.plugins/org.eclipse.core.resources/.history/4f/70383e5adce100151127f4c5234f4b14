@@ -1,0 +1,17 @@
+package cn.tedu.musiconline.biz;
+
+import java.util.List;
+
+import cn.tedu.musiconline.entity.Music;
+
+import android.os.AsyncTask;
+
+public class MusicBiz extends AsyncTask<String, String, List<Music>> {
+
+	@Override
+	protected List<Music> doInBackground(String... params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

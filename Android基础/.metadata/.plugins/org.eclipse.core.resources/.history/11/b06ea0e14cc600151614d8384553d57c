@@ -1,0 +1,92 @@
+package cn.tedu.listview_simpleadapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+public class MainActivity extends Activity {
+
+	private ListView lvContacts;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		lvContacts = (ListView) findViewById(R.id.lv_contacts);
+		
+		
+		Context context = this;
+		
+		List<Map<String, Object>> data = new ArrayList<Map<String,Object>>();
+		Map<String, Object> item;
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "Ã·Î÷");
+		item.put("number", "01012345610");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "ÄÚÂí¶û");
+		item.put("number", "01012345611");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "ËÕÑÇÀ×Ë¹");
+		item.put("number", "01012345609");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "¹şÎ¬");
+		item.put("number", "01012345606");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "ÒÁÄùË¹Ëş");
+		item.put("number", "01012345608");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "ÂŞÄÉ¶û¶à");
+		item.put("number", "01012345607");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "±´¶û");
+		item.put("number", "01012345605");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "±¾ÔóÂí");
+		item.put("number", "01012345604");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "ÒÁ²¼");
+		item.put("number", "01012345603");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "¶òÆë¶û");
+		item.put("number", "01012345602");
+		data.add(item);
+		
+		item = new HashMap<String, Object>();
+		item.put("name", "°¢¿üÂŞ");
+		item.put("number", "01012345601");
+		data.add(item);
+		
+		int resource = R.layout.contact_item;
+		String[] from = {"name", "number"};
+		int[] to = {R.id.tv_contact_item_name, R.id.tv_contact_item_number};
+		adapter = new SimpleAdapter(context, data, resource, from, to);
+		lvContacts.setAdapter(adapter);
+	}
+}

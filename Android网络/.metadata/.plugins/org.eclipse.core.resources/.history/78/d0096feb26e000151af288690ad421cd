@@ -1,0 +1,36 @@
+package cn.tedu.httpclient;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.EditText;
+
+public class MainActivity extends Activity {
+
+	private EditText etDate;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		etDate = (EditText) findViewById(R.id.et_date);
+	}
+
+	/**
+	 * Îª°´Å¥Ìí¼Ó¼àÌý
+	 */
+	public void doClick() {
+		sendByGet();
+	}
+
+	private void sendByGet() {
+		// 1. HttpClient
+		HttpClient client = new DefaultHttpClient();
+		// 2. HttpGet
+		String url = "http://";
+		
+	}
+}

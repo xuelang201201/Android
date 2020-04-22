@@ -1,0 +1,23 @@
+package cn.tedu.music_player_3.adapter;
+
+import java.util.List;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import cn.tedu.music_player_3.entity.Music;
+
+public class MusicAdapter extends BaseAdapter<Music> {
+
+	public MusicAdapter(Context context, List<Music> data) {
+		super(context, data);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

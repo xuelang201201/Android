@@ -1,0 +1,5 @@
+package cn.tedu.music_player_3.entity;
+
+public class Music {
+	
+}

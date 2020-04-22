@@ -1,0 +1,22 @@
+package cn.tedu.intent;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Music implements Parcelable {
+	public String path;
+	public String name;
+	public long duration;
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(name);
+		dest.writeString(path);
+		dest.writeLong(duration);
+	}
+	
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+}

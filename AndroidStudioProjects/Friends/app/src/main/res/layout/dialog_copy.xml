@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/colorNormal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/dialog_copy_title"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#cecece" />
+
+    <TextView
+        android:id="@+id/dialog_copy_copy"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/copy"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:background="@drawable/selector_press"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#cecece" />
+
+    <LinearLayout
+        android:id="@+id/dialog_copy_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/call"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:background="@drawable/selector_press"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#cecece" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_copy_sim1_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/sim1_call"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:background="@drawable/selector_press"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#cecece" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_copy_sim2_call"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/sim2_call"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:visibility="gone"
+        android:background="@drawable/selector_press"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/dialog_copy_visit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/visit"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:visibility="gone"
+        android:background="@drawable/selector_press"
+        android:gravity="center_vertical" />
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>transform.html</title>
+		<style>
+			.d1 {
+				background: darkcyan;
+				width: 200px;
+				height: 200px;
+				font-weight: bolder;
+				color: white;
+				font-size: 30px;
+				font-family: "微软雅黑";
+				transition: transform 2s;
+				/*-moz-transform: -moz-transform 2s;*/
+				/*-webkit-transform: -webkit-transform 2s;*/
+			}
+			.d1:hover {
+				transform: rotateY(3600deg);
+				/*transform: scaleX(0.5);*/
+				/*transform: scale(2, 0.5);*/
+				/*transform: translateX(-280px);*/
+				/*transform: translate(200px, 200px);*/
+				/*transform: rotate(3600deg);*/
+				/*-webkit-transform: rotate(3600deg);*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="d1">
+			ABCD
+		</div>
+	</body>
+</html>

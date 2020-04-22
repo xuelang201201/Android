@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListEmpActivity" >
+
+    <TextView
+        android:id="@+id/tv_list_emp_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#519032"
+        android:gravity="center"
+        android:text="员工列表"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/lv_list_emp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_list_emp_title" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/tv_list_to_add"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/lv_list_emp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:gravity="center|center"
+        android:text="←"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
+</RelativeLayout>

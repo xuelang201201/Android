@@ -1,0 +1,11 @@
+package cn.tedu.music_player_3.util;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+/**
+ * 通用工具类
+ */
+public class CommonUtils {
+	private static SimpleDateFormat sdf = new SimpleDateFormat("mm:ss", Locale.CHINA);
+}

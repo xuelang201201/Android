@@ -1,0 +1,38 @@
+package cn.tedu.circle_imageview;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Bitmap.Config;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+import android.widget.ImageView;
+
+public class CircleImageView extends ImageView {
+
+	public CircleImageView(Context context) {
+		super(context);
+	}
+
+	public CircleImageView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
+
+	public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+	}
+	
+	private Bitmap getSourceBitmap(Drawable drawable) {
+		if (drawable instanceof Drawable) {
+			BitmapDrawable bd = (BitmapDrawable) drawable;
+			return bd.getBitmap();
+		} else {
+			Bitmap bm = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Config.ARGB_8888);
+			Canvas canvas = new Canvas();
+			drawable.draw(canvas);
+			return bm;
+		}
+	}
+
+}

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='GBK' standalone='yes' ?>
+<email date="2016-1-26" time="15:34:30">
+	<from>aaa@aaa.com</from>
+	<to>
+		<to-email>aaa@aaa.com</to-email>
+		<to-email>bbb@bbb.com</to-email>
+		<to-email>ccc@ccc.com</to-email>
+	</to>
+	<subject>Hello Xml Pull</subject>
+	<body>
+		&gt;&gt;&gt;Hello Xml Pull!!!&lt;&lt;&lt;
+	    <![CDATA[>>>你好埃克斯爱慕哎呦普！！！<<<]]>
+	</body>
+</email>

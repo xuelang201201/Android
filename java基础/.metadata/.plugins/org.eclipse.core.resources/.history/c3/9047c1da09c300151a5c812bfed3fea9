@@ -1,0 +1,40 @@
+package tarena.day1902;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+
+public class Test1 {
+	public static void main(String[] args) throws Exception {
+		/*
+		 * Unicode -->
+		 *     默认
+		 *     GBK
+		 *     GB2312
+		 *     UTF-8
+		 *     UTF-16Be
+		 *     UTF-18Le  
+		 */
+		String s = "abc中文喆镕";
+		System.out.println(s);
+		
+		byte[] a;
+		String enc;
+		
+		enc = "默认";
+		a = s.getBytes();
+		System.out.println(enc+":\t"+Arrays.toString(a));
+		
+		enc = "GBK";
+		a = s.getBytes(enc);
+		System.out.println(enc+":\t"+Arrays.toString(a));
+		
+		enc = "GB2312";
+		a = s.getBytes(enc);
+		System.out.println(enc+":\t"+Arrays.toString(a));
+		
+		enc = "";
+		a = s.getBytes(enc);
+		System.out.println(enc+":\t"+Arrays.toString(a));
+		
+	}
+}

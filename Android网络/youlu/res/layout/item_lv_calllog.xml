@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:padding="3dp"
+  	android:orientation="horizontal"
+    tools:context=".MainActivity" >
+	
+    <cn.tedu.youlu.ui.CircleImageView 
+        android:id="@+id/ivPhoto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/img01g_15"/>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="bottom"
+            android:text="甄嬛嬛嬛嬛" />
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvNumber"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvName"
+            android:src="@drawable/img01g_05" />
+
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvName"
+            android:layout_toRightOf="@+id/ivIcon"
+            android:layout_marginLeft="5dp"
+            android:textSize="12sp"
+            android:text="15555555555" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:paddingRight="10dp"
+        android:layout_height="50dp"
+        android:textSize="23sp"
+        android:gravity="center"
+        android:text="08:00" />
+
+</LinearLayout>

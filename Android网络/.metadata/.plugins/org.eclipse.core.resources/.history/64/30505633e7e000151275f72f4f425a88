@@ -1,0 +1,112 @@
+package cn.tedu.android_day03_ems;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.widget.ListView;
+
+public class ListEmpActivity extends Activity {
+
+	private ListView lvEmp;
+	private List<Emp> emps;
+	
+	// 声明handler
+	private Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case HANDLER_LOAD_EMP_SUCCESS:
+				// 更新ListView
+				setAdapter();
+				break;
+			}
+		}
+	};
+	
+	public static final int HANDLER_LOAD_EMP_SUCCESS = 1;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_list_emp);
+		
+		setViews();
+		
+		// 发送http请求，访问所有的员工数据
+		new Thread() {
+			public void run() {
+				try {
+					loadEmps();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
+
+	/**
+	 * 异步执行，查询所有的员工信息 
+	 * @throws IOException 
+	 * @throws JSONException 
+	 */
+	public void loadEmps() throws IOException, JSONException {
+		// 1. HttpClient
+		HttpClient client = new DefaultHttpClient();
+		// 2. HttpGet
+		String url = "http://172.16.44.131:8080/ems/listEmp.html";
+		HttpGet get = new HttpGet(url);
+		// 3. execute()
+		HttpResponse resp = client.execute(get);
+		// 4. 解析json
+		String json = EntityUtils.toString(resp.getEntity());
+		Log.i("info", "json:" + json);
+		JSONObject jsonObj = new JSONObject(json);
+		if (jsonObj.getString("result").equals("ok")) {
+			JSONArray ary = jsonObj.getJSONArray("data");
+			emps = parseJSON(ary);
+			// 5. 更新UI
+			handler.
+		}
+	}
+	
+	/**
+	 * 解析jsonarray生成List<Emp>
+	 * @param ary [{id:, name:,xxxx},{},{}]
+	 * @return emps
+	 * @throws JSONException
+	 */
+	public List<Emp> parseJSON(JSONArray ary) throws JSONException {
+		List<Emp> emps = new ArrayList<Emp>();
+		for (int i = 0; i < ary.length(); i++) {
+			JSONObject obj = ary.getJSONObject(i);
+			Emp emp = new Emp();
+			//{id:1, name:zs, salary:, age,gender}
+			emp.setId(obj.getInt("id"));
+			emp.setName(obj.getString("name"));
+			emp.setAge(obj.getInt("age"));
+			emp.setSalary(obj.getDouble("salary"));
+			emp.setGender(obj.getString("gender"));
+			emps.add(emp);
+		}
+		return emps;
+	}
+
+	private void setViews() {
+		lvEmp = (ListView) findViewById(R.id.lv_list_emp);
+	}
+}

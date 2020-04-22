@@ -1,0 +1,6 @@
+package cn.tedu.musiconline.util;
+
+
+public class HttpUtils {
+	
+}

@@ -1,0 +1,92 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".FrameLayoutActivity" >
+    
+    <Button 
+        android:text="bt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left" />
+    
+    <Button 
+        android:text="bt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal" />
+    
+    <Button 
+        android:text="bt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right" />
+    
+    <Button 
+        android:text="bt4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center" />
+    
+    <Button 
+        android:text="bt5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal" />
+    
+    <Button 
+        android:text="bt6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_gravity="right|center_vertical" />
+    
+    <Button 
+        android:text="bt7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom" />
+    
+    <Button 
+        android:text="bt8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal" />
+    
+    <Button 
+        android:text="bt9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom" />
+  
+    <Button 
+        android:text="bt10"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:textSize="120sp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="-80dp" />
+    
+    <!-- 
+    
+    程序中可以设置图片的可见性
+    ImageView iv = ...
+    iv.setVisibility(View.VISBLE);
+    iv.setVisibility(View.INVISBLE);
+    iv.setVisibility(View.GONE);
+    
+     -->
+    
+    <ImageView 
+        android:src="@android:drawable/ic_media_pause"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="#669"
+        android:layout_gravity="center" 
+        android:visibility="visible" />
+
+</merge>

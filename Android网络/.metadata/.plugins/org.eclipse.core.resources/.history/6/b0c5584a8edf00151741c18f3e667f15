@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/xml; charset=utf-8" pageEncoding="utf-8"	import="entity.*, java.util.*"%><?xml version="1.0" encoding="UTF-8"?>
+<% // 模拟查询数据库后，获得的航班信息
+	List<Flight> flights = new ArrayList<Flight>();
+	flights.add(new Flight(1, "9527", "北京", "上海", 899,"2016-03-01"));
+	flights.add(new Flight(2, "9521", "北京", "成都", 900,"2016-03-01"));
+	flights.add(new Flight(3, "9522", "上海", "北京", 889,"2016-03-01"));
+	flights.add(new Flight(4, "9523", "上海", "成都", 799,"2016-03-02"));
+	flights.add(new Flight(5, "9524", "北京", "成都", 999,"2016-03-02"));
+	flights.add(new Flight(6, "9525", "成都", "上海", 999,"2016-03-02"));
+	flights.add(new Flight(7, "9526", "成都", "上海", 999,"2016-03-02"));
+	flights.add(new Flight(8, "9528", "北京", "上海", 899,"2016-03-03"));
+	flights.add(new Flight(9, "9529", "北京", "成都", 999,"2016-03-03"));
+	flights.add(new Flight(10, "9520", "北京", "上海", 899,"2016-03-04"));
+	
+	// 把数据库中查到的数据以xml的形式
+	// 输出给客户端
+%>    
+<flights>
+<%
+	for (int i=0; i<flights.size(); i++) {
+		Flight f = flights.get(i);
+%>	
+<%} %>
+%>
+	<flight>
+		<id></id>
+		<number></number>
+		<from></from>
+		<to></to>
+		<price></price>
+		<date></date>
+	</flight>
+</flights>

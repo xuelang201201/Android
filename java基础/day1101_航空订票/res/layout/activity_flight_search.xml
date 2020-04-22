@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BranchSearchActivity"
+    android:orientation="vertical" >
+
+    <!-- ********标题栏开始******** -->
+	<RelativeLayout
+	    
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#004080" >
+	    
+	    <ImageView 
+	        android:src="@drawable/home"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:padding="10dp" />
+	    
+	    <TextView 
+	        android:text="航班查询"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:textColor="#fff"
+	        android:textSize="20sp" />
+	    
+	</RelativeLayout>
+    <!-- ********标题栏结束******** -->
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="80dp" >
+        
+        <!-- ****出发城市开始**** -->
+        <RelativeLayout 
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+            
+            <ImageView 
+                android:id="@+id/iv1"
+                android:src="@drawable/from"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true" />
+            <Spinner 
+                android:id="@+id/sp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv1"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/sp_more" />
+            <TextView 
+                android:text="出发城市"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/sp1"
+                android:layout_above="@+id/sp1" />
+            
+        </RelativeLayout>
+        <!-- ****出发城市结束**** -->
+        
+        <!-- ****到达城市开始**** -->
+        <RelativeLayout 
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+            
+            <ImageView 
+                android:id="@+id/iv2"
+                android:src="@drawable/to"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true" />
+            <Spinner 
+                android:id="@+id/sp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv2"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/sp_more" />
+            <TextView 
+                android:text="到达城市"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/sp2"
+                android:layout_above="@+id/sp2" />
+            
+        </RelativeLayout>
+        <!-- ****到达城市结束**** -->
+        
+    </LinearLayout>
+
+     <Button 
+        android:id="@+id/bt1"
+        android:text="查询"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bt_bg"
+        android:textColor="#fff" 
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp" />
+    
+    <ImageView 
+        android:src="@drawable/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
+
+    <ListView
+        android:id="@+id/lv1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f1f1f1" />
+    
+</LinearLayout>

@@ -1,0 +1,20 @@
+package cn.tedu.test;
+
+import java.util.Date;
+
+public class Timer {
+	public static void main(String[] args) {
+		for(int i = 0; i < 100; i++) {
+			Date date = new Date();
+			System.out.println(date);
+			
+			// Ïß³ÌÐÝÃß1Ãë
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+
+			}
+			
+		}
+	}
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 标题背景色 -->
+    <color name="main_color">#0278c0</color>
+    <!-- 字体颜色 -->
+    <color name="text_color">#ffffff</color>
+    
+    <color name="background_color">#ffffff</color>
+    <color name="rl_background_color">#999999</color>
+</resources>

@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#963622"
+        android:gravity="center"
+        android:text="音乐列表"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <!-- ListView -->
+
+    <ListView
+        android:id="@+id/lv_musics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_player_info"
+        android:layout_below="@+id/textView1" />
+
+    <!-- 信息显示区域 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_player_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_buttons" >
+
+        <TextView
+            android:id="@+id/tv_music_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:text="请选择歌曲" />
+
+        <TextView
+            android:id="@+id/tv_music_current_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/sb_music_progress"
+            android:text="00:00"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_music_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/sb_music_progress"
+            android:text="00:00"
+            android:textSize="12sp" />
+
+        <SeekBar
+            android:id="@+id/sb_music_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tv_music_title"
+            android:max="100" />
+
+    </RelativeLayout>
+
+    <!-- 底部按钮区域 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <ImageButton
+            android:id="@+id/ib_music_play_or_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null"
+            android:src="@android:drawable/ic_media_play" />
+
+        <ImageButton
+            android:id="@+id/ib_music_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ib_music_play_or_pause"
+            android:layout_toLeftOf="@+id/ib_music_play_or_pause"
+            android:contentDescription="@null"
+            android:src="@android:drawable/ic_media_previous" />
+
+        <ImageButton
+            android:id="@+id/ib_music_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ib_music_play_or_pause"
+            android:layout_toRightOf="@+id/ib_music_play_or_pause"
+            android:contentDescription="@null"
+            android:src="@android:drawable/ic_media_next" />
+    </RelativeLayout>
+
+</RelativeLayout>

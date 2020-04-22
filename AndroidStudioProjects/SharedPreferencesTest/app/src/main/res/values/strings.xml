@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SharedPreferencesTest</string>
+    <string name="save">SAVE DATA</string>
+    <string name="restore">RESTORE DATA</string>
+</resources>

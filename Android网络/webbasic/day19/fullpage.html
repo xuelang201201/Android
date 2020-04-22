@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>fullpage.html</title>
+		<!--引入相关文件-->
+		<link rel="stylesheet" href="jquery.fullPage.css" />
+		<script src="jquery.1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jquery.fullPage.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#mypage").fullpage({
+					sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'] , 
+					scrollingSpeed : 400,
+					navigation : true,
+					navigationColor : "#f00",
+					controlArrow : false
+				});
+			});
+		</script>
+		<style type="text/css">
+			h2 {
+				text-align: center;
+			}
+			.pointer {
+				position: fixed;
+				left: 0px;
+				bottom: 0px;
+				width: 100%;
+				height: 40px;
+				background: url(timg.jpg) no-repeat center;
+				background-size: contain;
+				-webkit-animation: anim 0.5s infinite alternate;
+			}
+			
+			@-webkit-keyframes anim {
+				from {
+					bottom: 0px;
+				}
+				to {
+					bottom: 40px;
+				}
+				.fp-controlArrow {
+					display: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mypage">
+			<div class="section">
+				<h2>第一屏</h2>
+			</div>
+			<div class="section">
+				<h2>第二屏</h2>
+			</div>
+			<div class="section">
+				<div class="slide">第三屏的第一屏</div>
+		        <div class="slide">第三屏的第二屏</div>
+		        <div class="slide">第三屏的第三屏</div>
+		        <div class="slide">第三屏的第四屏</div>		
+			</div>			
+			<div class="section">
+				<h2>第四屏</h2>
+			</div>
+		</div>
+		<div class="pointer"></div>
+	</body>
+</html>

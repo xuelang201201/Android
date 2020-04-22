@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>贪吃蛇</title>
+		<style type="text/css">
+			#mCanvas {
+				float: left;
+				border: 1px solid black;
+				margin-right: 10px;
+			}
+			table {
+				float: left;
+			}
+			div {
+				width: 50px;
+				height: 50px;
+				border: 1px solid black;
+				text-align: center;
+				line-height: 50px;
+				font-family: "微软雅黑";
+			}
+			div:hover {
+				cursor: pointer;
+				background: #abcdef;
+			}
+		</style>
+		<script src="Node.js" type="text/javascript" charset="utf-8"></script>
+		<script src="Worm.js" type="text/javascript" charset="utf-8"></script>
+		<script src="Stage.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 定义自己的js -->
+		<script type="text/javascript">
+			function load () {
+				//绘制舞台 
+				var stage = new Stage();
+				var worm = stage.worm;
+				var mCanvas = document.getElementById("mCanvas");
+				var ctx = mCanvas.getContext("2d");
+				stage.print(ctx);
+
+				window.setInterval(function () {
+					worm.step();
+					stage.print(ctx);
+				},500);
+				
+			}
+			function changeDir (dir) {
+				DIR = dir;
+			}
+		</script>
+	</head>
+	<body onload="load()">
+		<canvas id="mCanvas" width="500" height="500"></canvas>
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td></td><td><div onclick="changeDir(UP)">上</div></td><td></td>
+			</tr>
+			<tr>
+				<td><div onclick="changeDir(LEFT)">左</div></td><td></td><td><div onclick="changeDir(RIGHT)">右</div></td>
+			</tr>
+			<tr>
+				<td></td><td><div onclick="changeDir(DOWN)">下</div></td><td></td>
+			</tr>
+		</table>
+	</body>
+
+	</head>
+	<body>
+	</body>
+</html>

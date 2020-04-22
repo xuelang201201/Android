@@ -1,0 +1,427 @@
+package cn.tedu.weather.ui;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.achartengine.ChartFactory;
+import org.achartengine.chart.PointStyle;
+import org.achartengine.model.XYMultipleSeriesDataset;
+import org.achartengine.model.XYSeries;
+import org.achartengine.renderer.XYMultipleSeriesRenderer;
+import org.achartengine.renderer.XYSeriesRenderer;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.format.DateUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import cn.tedu.weather.R;
+import cn.tedu.weather.entity.MyWeather;
+import cn.tedu.weather.entity.MyWeather.Result.Data.Weather;
+import cn.tedu.weather.util.HttpUtil;
+import cn.tedu.weather.util.HttpUtil.OnGetWeatherListener;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.natasa.progressviews.CircleSegmentBar;
+import com.natasa.progressviews.utils.ProgressStartPoint;
+
+public class MainActivity extends Activity {
+
+	private View headerView;
+	private TextView tvCityname; // 在顶部显示城市名称
+
+	private View weatherView; // 显示当日天气的一套视图
+
+	private PullToRefreshListView ptrListView;
+	private ListView listView;
+	private List<Weather> weathers; // 数据源
+	private ArrayAdapter<Weather> adapter; // 适配器
+	private TextView tvUpdateTime;
+	private CircleSegmentBar segmentBar;
+	private TextView tvWeekDay;
+	private TextView tvCodition;
+	private Handler mHandler;
+	private Runnable mTimer;
+	private String temperature;
+	private SlidingMenu menu;
+
+	// 用来装载未来天气走势图
+	private FrameLayout chartContainer;
+
+	// 专门提供绘制图标时使用的数据
+	MyWeather weather; 
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// 去掉默认标题栏(这句代码一定要写在setContentView前面)
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_main);
+		mHandler = new Handler();
+
+		chartContainer = (FrameLayout) findViewById(R.id.chartcontainer);
+		initHeaderView();
+		initWeatherView();
+		initListView();
+		initSlidingMenu();
+		getWeather("成都");
+	}
+
+	/**
+	 * 初始化侧滑菜单
+	 */
+	private void initSlidingMenu() {
+		menu = new SlidingMenu(this);
+		menu.setMode(SlidingMenu.LEFT);
+		// 设置触摸屏幕的模式
+		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		menu.setShadowWidth(R.dimen.shadow_width);
+		menu.setShadowDrawable(R.drawable.hdpi);
+
+		// 设置滑动菜单视图的宽度
+		menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+		// 设置渐入渐出效果的值
+		menu.setFadeDegree(0.35f);
+		/** 
+		 * SLIDING_WINDOW will include the Title/ActionBar in the content 
+		 * section of the SlidingMenu, while SLIDING_CONTENT does not. 
+		 */  
+		menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+		// 为侧滑菜单设置布局
+		menu.setMenu(R.layout.menu);
+	}
+
+	private void getWeather(String city) {
+		// 发起网络访问请求
+		HttpUtil.getWeather(this, city, new OnGetWeatherListener() {
+
+			@Override
+			public void OnSuccess(MyWeather myWeather) {
+				weather = myWeather; // 为weather属性赋值
+				// 让下拉刷新的刷新提示标签消失
+				ptrListView.onRefreshComplete();
+				weathers = myWeather.getResult().getData().getWeather();
+				adapter = new ArrayAdapter<MyWeather.Result.Data.Weather>(MainActivity.this, android.R.layout.simple_list_item_1, weathers);
+				listView.setAdapter(adapter);
+
+				tvUpdateTime.setText("更新时间: "+myWeather.getResult().getData().getRealtime().getTime());
+				String weekDay="";
+				switch (myWeather.getResult().getData().getRealtime().getWeek()) {
+				case 1:
+					weekDay = "周一";
+					break;
+				case 2:
+					weekDay = "周二";
+					break;
+				case 3:
+					weekDay = "周三";
+					break;
+				case 4:
+					weekDay = "周四";
+					break;
+				case 5:
+					weekDay = "周五";
+					break;
+				case 6:
+					weekDay = "周六";
+					break;
+				case 7:
+					weekDay = "周日";
+					break;
+				}
+				tvWeekDay.setText(weekDay);
+				String info = myWeather.getResult().getData().getRealtime().getWeather().getInfo();
+				String quality = "空气质量: " + myWeather.getResult().getData().getPm25().getPm25().getQuality();
+				tvCodition.setText(info + " | " + quality);
+
+				//you can set for every ProgressView width, progress background width, progress bar line width
+				segmentBar.setCircleViewPadding(2);
+				segmentBar.setWidth(250);
+				segmentBar.setWidthProgressBackground(25);
+				segmentBar.setWidthProgressBarLine(25);
+				//you can set start position for progress
+				segmentBar.setStartPositionInDegrees(ProgressStartPoint.BOTTOM);
+
+				//you can set linear gradient with default colors or to set yours colors, or sweep gradient
+				segmentBar.setLinearGradientProgress(true);
+
+				temperature = myWeather.getResult().getData().getRealtime().getWeather().getTemperature();
+
+				setTemperature(temperature);
+
+				//segmentBar.setText(temperature + " °C");
+				//segmentBar.setProgress((Integer.parseInt(temperature)) * 100 / 50);
+			}
+		});
+	}
+
+	protected void setTemperature(final String temperature) {
+		// ptrListView.setMode(Mode.DISABLED);
+
+		mTimer = new Runnable() {
+			int progress = 0;
+			@Override
+			public void run() {
+				progress += 1;
+				if (progress <= (Integer.parseInt(temperature) * 100) / 50) {
+					runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							segmentBar.setProgress((float) progress);
+							segmentBar.setText("" + progress * 50 / 100 + " °C", 30, Color.GRAY);
+						}
+					});
+				} else {
+					// ptrListView.setMode(Mode.PULL_FROM_START);
+				}
+				mHandler.postDelayed(this, 50);
+			}
+		};
+
+		mHandler.postDelayed(mTimer, 500);
+	}
+
+	private void initWeatherView() {
+		weatherView = getLayoutInflater().inflate(R.layout.weather_view, null);
+		tvUpdateTime = (TextView) weatherView.findViewById(R.id.tv_weather_updatetime);
+		segmentBar = (CircleSegmentBar) weatherView.findViewById(R.id.segment_bar_weather);
+		tvWeekDay = (TextView) weatherView.findViewById(R.id.tv_weather_weekday);
+		tvCodition = (TextView) weatherView.findViewById(R.id.tv_weather_codition);
+	}
+
+	private void initHeaderView() {
+		headerView = findViewById(R.id.headerview);
+		ImageView ivLeft = (ImageView) headerView.findViewById(R.id.iv_headerview_left);
+		// 设置ivLeft图片颜色从灰色 ---> 白色
+		ivLeft.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+
+		ivLeft.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				menu.toggle();
+			}
+		});
+
+		ImageView ivRight = (ImageView) headerView.findViewById(R.id.iv_headerview_right);
+		ivRight.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+
+		ivRight.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (chartContainer.getVisibility() != View.VISIBLE) {
+					chartContainer.setVisibility(View.VISIBLE);
+					// 把之前的天气走势图清除掉
+					chartContainer.removeAllViews();
+					initChart(chartContainer);
+				} else {
+					chartContainer.setVisibility(View.GONE);
+				}
+			}
+		});
+
+		tvCityname = (TextView) headerView.findViewById(R.id.tv_cityname);
+		tvCityname.setText("成都");
+	}
+
+	/**
+	 * 绘制未来天气走势图，添加到容器中
+	 * @param chartContainer
+	 */
+	protected void initChart(FrameLayout chartContainer) {
+
+		String[] titles = new String[] { "最高温度", "最低温度" };
+		List<double[]> x = new ArrayList<double[]>();
+		for (int i = 0; i < titles.length; i++) {
+			x.add(new double[] { 1, 2, 3, 4, 5, 6, 7 });
+		}
+		List<double[]> values = new ArrayList<double[]>();
+
+		double[] days = new double[7];
+		double[] nights = new double[7];
+
+		List<Weather> list = weather.getResult().getData().getWeather();
+		for (int i = 0; i < list.size(); i++) {
+			days[i] = Double.parseDouble(list.get(i).getInfo().getDay().get(2));
+			nights[i] = Double.parseDouble(list.get(i).getInfo().getNight().get(2));
+		}
+
+		values.add(days);
+		values.add(nights);
+
+		int[] colors = new int[] { Color.RED, Color.BLUE };
+		PointStyle[] styles = new PointStyle[] { PointStyle.TRIANGLE, PointStyle.SQUARE };
+		XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
+		int length = renderer.getSeriesRendererCount();
+		for (int i = 0; i < length; i++) {
+			// 设置每条折线的“点”是实心的
+			((XYSeriesRenderer) renderer.getSeriesRendererAt(i)).setFillPoints(true);
+		}
+		setChartSettings(renderer, "温度走势", "未来七天", "温度", 0.5, 7.5, -10, 40,
+				Color.LTGRAY, Color.LTGRAY);
+		// x轴上面放多少个Label
+		renderer.setXLabels(7);
+		renderer.setYLabels(10);
+		// 是否显示网格
+		renderer.setShowGrid(false);
+		// 右下角设置放大缩小
+//		renderer.setXLabelsAlign(Align.RIGHT);
+//		renderer.setYLabelsAlign(Align.RIGHT);
+//		renderer.setZoomButtonsVisible(true);
+		renderer.setPanLimits(new double[] { -10, 20, -10, 40 });
+		renderer.setZoomLimits(new double[] { -10, 20, -10, 40 });
+
+		XYMultipleSeriesDataset dataset = buildDataset(titles, x, values);
+//		XYSeries series = dataset.getSeriesAt(0);
+//		series.addAnnotation("Vacation", 6, 30);
+
+		View chart = ChartFactory.getLineChartView(this, dataset, renderer);
+		chartContainer.addView(chart);
+	}
+
+	private XYMultipleSeriesDataset buildDataset(String[] titles, List<double[]> xValues,
+		      List<double[]> yValues) {
+		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+	    addXYSeries(dataset, titles, xValues, yValues, 0);
+	    return dataset;
+	}
+
+	private void addXYSeries(XYMultipleSeriesDataset dataset, String[] titles, List<double[]> xValues,
+		      List<double[]> yValues, int scale) {
+		 int length = titles.length;
+		    for (int i = 0; i < length; i++) {
+		      XYSeries series = new XYSeries(titles[i], scale);
+		      double[] xV = xValues.get(i);
+		      double[] yV = yValues.get(i);
+		      int seriesLength = xV.length;
+		      for (int k = 0; k < seriesLength; k++) {
+		        series.add(xV[k], yV[k]);
+		      }
+		      dataset.addSeries(series);
+		    }
+	}
+
+	private void setChartSettings(XYMultipleSeriesRenderer renderer, String title, String xTitle,
+			String yTitle, double xMin, double xMax, double yMin, double yMax, int axesColor,
+			int labelsColor) {
+		renderer.setChartTitle(title);
+		renderer.setXTitle(xTitle);
+		renderer.setYTitle(yTitle);
+		renderer.setXAxisMin(xMin);
+		renderer.setXAxisMax(xMax);
+		renderer.setYAxisMin(yMin);
+		renderer.setYAxisMax(yMax);
+		renderer.setAxesColor(axesColor);
+		renderer.setLabelsColor(labelsColor);
+	}
+
+	private XYMultipleSeriesRenderer buildRenderer(int[] colors,
+			PointStyle[] styles) {
+		XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
+		setRenderer(renderer, colors, styles);
+		return renderer;
+	}
+
+	private void setRenderer(XYMultipleSeriesRenderer renderer, int[] colors,
+			PointStyle[] styles) {
+		// 设置X、Y轴标题的字体的大小
+		renderer.setAxisTitleTextSize(16);
+		// 图标的标题文字大小
+		renderer.setChartTitleTextSize(30);
+		// x、y轴上数字的大小
+		renderer.setLabelsTextSize(16);
+		// 图例的文字大小
+		renderer.setLegendTextSize(16);
+		// 折线图“点”的大小
+		renderer.setPointSize(8f);
+		// 设置图标的边距
+		renderer.setMargins(new int[] { 20, 30, 15, 20 });
+
+		int length = colors.length;
+		for (int i = 0; i < length; i++) {
+			XYSeriesRenderer r = new XYSeriesRenderer();
+			r.setColor(colors[i]);
+			r.setPointStyle(styles[i]);
+			r.setDisplayChartValues(true);
+			renderer.addSeriesRenderer(r);
+		}
+	}
+	private void initListView() {
+		ptrListView = (PullToRefreshListView) findViewById(R.id.listView);
+		// 添加一个刷新的方式
+		ptrListView.setMode(Mode.PULL_FROM_START);
+		listView = ptrListView.getRefreshableView();
+		listView.addHeaderView(weatherView);
+		ptrListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
+
+			@Override
+			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				mHandler.removeCallbacksAndMessages(null);
+				String label = DateUtils.formatDateTime(getApplicationContext(), System.currentTimeMillis(),
+						DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+				// Update the LastUpdatedLabel
+				refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+				// 下拉刷新天气情况
+				getWeather(tvCityname.toString());
+			}
+		});
+	}
+
+	public void setCity(View v) {
+		String city = "";
+		switch (v.getId()) {
+		case R.id.tv_menu_bj:
+			city = "北京";
+			break;
+		case R.id.tv_menu_sh:
+			city = "上海";
+			break;
+		case R.id.tv_menu_gz:
+			city = "广州";
+			break;
+		case R.id.tv_menu_sz:
+			city = "深圳";
+			break;
+		case R.id.tv_menu_cd:
+			city = "成都";
+			break;
+		case R.id.tv_menu_ls:
+			city = "拉萨";
+			break;
+		case R.id.tv_menu_sy:
+			city = "沈阳";
+			break;
+		case R.id.tv_menu_sanya:
+			city = "三亚";
+			break;
+		case R.id.tv_menu_hz:
+			city = "杭州";
+			break;
+		case R.id.tv_menu_hh:
+			city = "黑河";
+			break;
+		}
+		// 设定headerView的title显示选定的城市的名称
+		tvCityname.setText(city);
+		// 查询用户选定城市的天气
+		getWeather(city);
+		// 侧滑菜单收起
+		menu.toggle();
+	}
+}

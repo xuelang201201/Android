@@ -1,0 +1,31 @@
+package cn.tedu.chat;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * 聊天室的服务端程序
+ */
+public class ChatServer {
+	
+	private List<Socket> sockets = new ArrayList<Socket>();
+	
+	/**
+	 * 启动群聊服务
+	 * @throws IOException 
+	 */
+	public void startServer() throws IOException {
+		ServerSocket ss = new ServerSocket(8000);
+		while (true) {
+			Socket socket = ss.accept();
+			System.out.println(socket.getInetAddress());
+			sockets.add(socket);
+			// 启动线程，并发处理多个客户端的请求
+			
+		}
+	}
+}

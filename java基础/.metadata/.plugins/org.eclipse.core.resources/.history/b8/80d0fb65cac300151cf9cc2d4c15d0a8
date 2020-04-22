@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+<email>
+	<from>aaa@aaa.com</from>
+	<to>
+		<to-email>bbb@bbb.com</to-email>
+		<to-email>ccc@ccc.com</to-email>
+		<to-email>ddd@ddd.com</to-email>
+	</to>
+	<subject>Hello xml</subject>
+	<body>
+		Hello xml!!!
+		你好埃克斯爱慕哎呦！！
+	</body>
+</email>

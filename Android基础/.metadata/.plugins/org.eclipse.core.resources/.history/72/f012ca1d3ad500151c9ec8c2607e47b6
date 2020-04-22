@@ -1,0 +1,8 @@
+package cn.tedu.music_player_3.util;
+
+/**
+ * 通用工具类
+ */
+public class CommonUtils {
+	
+}

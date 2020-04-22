@@ -1,0 +1,21 @@
+package cn.tedu.test;
+
+public class Test {
+	public static void main(String[] args) {
+		WorkThread thread = new WorkThread();
+		thread.start();
+		
+		Worker worker = new Worker();
+		Thread t = new Thread(worker);
+		t.start();
+		
+		for(int i = 0; i < 100; i++) {
+			System.out.println("Test main i = " + i);
+			try {
+				thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

@@ -1,0 +1,51 @@
+package cn.tedu.music_player_1;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import android.os.Environment;
+import android.util.Log;
+
+public class MusicDao {
+	/**
+	 * 获取歌曲的列表数据
+	 * @return 歌曲信息的List集合，该返回值永不为null
+	 */
+	public List<Music> getData() {
+		//准备返回值
+		List<Music> musics = new ArrayList<Music>();
+		//判断sdcard是否可用
+		if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
+			//指定歌曲目录的路径
+			//String musicDirPath = "/mnt/sdcard/Music/";
+			//获取歌曲目录的文件对象
+			//File musicDir = new File(musicDirPath);
+			File musicDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+			//判断歌曲目录是否存在
+			if(musicDir.exists()) {
+				//获取歌曲目录下所有文件对象
+				File[] files = musicDir.listFiles();
+				//遍历
+				for (int i = 0; i < files.length; i++) {
+					//判断是否是文件
+					if(files[i].isFile()) {
+						//判断扩展名
+						if(files[i].getName().toLowerCase(Locale.CHINA).endsWith(".mp3")) {
+							Log.d("tedu", "" + files[i]);
+							Music music = new Music();
+							music.setPath(files[i].getAbsolutePath());
+							//得到音乐名称
+							music.setTitle(files[i].getName().substring(0, files[i].getName().length() - 4));
+							//向列表中添加音乐
+							musics.add(music);
+						}
+					}
+				}
+			}
+		}
+		//返回
+		return musics;
+	}
+}

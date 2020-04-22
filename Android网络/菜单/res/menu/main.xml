@@ -1,0 +1,56 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/setting_file"
+        android:orderInCategory="101"
+        android:showAsAction="never"
+        android:title="File">
+        
+        <menu>
+            <item 
+                android:id="@+id/setting_new"
+		        android:orderInCategory="1011"
+		        android:showAsAction="never"
+		        android:title="New"/>
+            <item 
+                android:id="@+id/setting_open"
+		        android:orderInCategory="1012"
+		        android:showAsAction="never"
+		        android:title="Open"/>
+            <item 
+                android:id="@+id/setting_close"
+		        android:orderInCategory="1013"
+		        android:showAsAction="never"
+		        android:title="Close"/>
+            <item 
+                android:id="@+id/setting_save"
+		        android:orderInCategory="1014"
+		        android:showAsAction="never"
+		        android:title="Save"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/setting_edit"
+        android:orderInCategory="102"
+        android:showAsAction="never"
+        android:title="Edit"/>
+    
+    <item
+        android:id="@+id/setting_refactor"
+        android:orderInCategory="103"
+        android:showAsAction="never"
+        android:title="Refactor"/>
+    
+    <item
+        android:id="@+id/setting_source"
+        android:orderInCategory="104"
+        android:showAsAction="never"
+        android:title="Source"/>
+    
+    <item
+        android:id="@+id/setting_nevigate"
+        android:orderInCategory="105"
+        android:showAsAction="never"
+        android:title="Nevigate"/>
+
+</menu>

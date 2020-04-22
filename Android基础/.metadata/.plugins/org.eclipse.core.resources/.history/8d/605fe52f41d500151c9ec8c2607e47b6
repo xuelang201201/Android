@@ -1,0 +1,37 @@
+package cn.tedu.music_player_3.util;
+
+public interface Consts {
+	/**
+	 * Activity发出的广播：播放或暂停
+	 */
+	String ACTION_PLAY_OR_PAUSE = "cn.tedu.intent.action.PLAY_OR_PAUSE";
+	/**
+	 * Activity发出的广播：播放上一首
+	 */
+	String ACTION_PREVIOUS = "cn.tedu.intent.action.PLAY_PREVIOUS";
+	/**
+	 * Activity发出的广播：播放下一首
+	 */
+	String ACTION_NEXT = "cn.tedu.intent.action.NEXT";
+	/**
+	 * Activity发出的广播：播放指定的歌曲
+	 */
+	String ACTION_PLAY = "cn.tedu.intent.action.PLAY";
+	/**
+	 * Service发出的广播：设置界面为播放状态
+	 */
+	String ACTION_SET_PLAY_STATE = "cn.tedu.intent.action.SET_PLAY_STATE";
+	/**
+	 * Service发出的广播：设置界面为暂停状态
+	 */
+	String ACTION_SET_PAUSE_STATE = "cn.tedu.intent.action.SET_PAUSE_STATE";
+	
+	/**
+	 * Extra：歌曲的position
+	 */
+	String EXTRA_POSITION = "cn.tedu.intent.extra.POSITION";
+	/**
+	 * Extra：歌曲的总时长
+	 */
+	String EXTRA_DURATION = "cn.tedu.intent.extra.DURATION";
+}

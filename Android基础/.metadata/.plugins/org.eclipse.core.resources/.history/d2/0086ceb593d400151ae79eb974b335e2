@@ -1,0 +1,7 @@
+package cn.tedu.broadcast_receiver;
+
+import android.content.BroadcastReceiver;
+
+public class CustomReceiver extends BroadcastReceiver {
+
+}

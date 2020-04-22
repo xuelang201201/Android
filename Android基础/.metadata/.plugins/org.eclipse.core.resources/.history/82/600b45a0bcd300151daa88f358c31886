@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="app_name">跨进程绑定Service-客户端</string>
+
+</resources>

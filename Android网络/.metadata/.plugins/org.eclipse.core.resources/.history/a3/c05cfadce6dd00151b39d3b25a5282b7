@@ -1,0 +1,85 @@
+package cn.tedu.tab_menu_2.ui;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import cn.tedu.tab_menu_2.R;
+
+public class MainActivity extends FragmentActivity {
+	private Button btnTabMenuDeal;
+	private Button btnTabMenuNearby;
+	private Button btnTabMenuMy;
+	private Button btnTabMenuMore;
+	private FrameLayout flContainer;
+	private FragmentPagerAdapter adapter;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		btnTabMenuDeal = (Button) findViewById(R.id.btn_tab_menu_deal);
+		btnTabMenuNearby = (Button) findViewById(R.id.btn_tab_menu_nearby);
+		btnTabMenuMy = (Button) findViewById(R.id.btn_tab_menu_my);
+		btnTabMenuMore = (Button) findViewById(R.id.btn_tab_menu_more);
+		flContainer = findViewById(R.id.fl_container);
+
+		InnerOnClickListener listener = new InnerOnClickListener();
+
+		btnTabMenuDeal.setOnClickListener(listener);
+		btnTabMenuNearby.setOnClickListener(listener);
+		btnTabMenuMy.setOnClickListener(listener);
+		btnTabMenuMore.setOnClickListener(listener);
+
+		setTabMenuSelected(btnTabMenuDeal);
+		
+		
+	}
+
+	/**
+	 * 选中底部菜单中的某项
+	 * @param btn 被点击的按钮的对象
+	 */
+	 private void setTabMenuSelected(Button btn) {
+		 btnTabMenuDeal.setSelected(false);
+		 btnTabMenuNearby.setSelected(false);
+		 btnTabMenuMy.setSelected(false);
+		 btnTabMenuMore.setSelected(false);
+
+		 btn.setSelected(true);
+	 }
+
+	 private class InnerOnClickListener implements View.OnClickListener {
+
+		 @Override
+		 public void onClick(View view) {
+			 switch (view.getId()) {
+			 case R.id.btn_tab_menu_deal:
+				 setTabMenuSelected(btnTabMenuDeal);
+				 tvContent.setText("团购");
+				 break;
+
+			 case R.id.btn_tab_menu_nearby:
+				 setTabMenuSelected(btnTabMenuNearby);
+				 tvContent.setText("附近");
+				 break;
+
+			 case R.id.btn_tab_menu_my:
+				 setTabMenuSelected(btnTabMenuMy);
+				 tvContent.setText("我的");
+				 break;
+
+			 case R.id.btn_tab_menu_more:
+				 setTabMenuSelected(btnTabMenuMore);
+				 tvContent.setText("更多");
+				 break;
+			 }
+		 }
+
+	 }
+
+}

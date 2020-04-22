@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/colorToolBar"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/holo_blue_light"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/header_view_left_image_view"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_back"
+            android:contentDescription="@null" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" >
+
+            <TextView
+                android:id="@+id/header_view_title_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/header_view_title_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:inputType="textUri"
+                android:textColor="@android:color/white"
+                android:background="@null" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/header_view_right_image_view"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:src="@drawable/ic_reload"
+            android:contentDescription="@null" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,10 @@
+package cn.tedu.weather.entity;
+
+import java.util.Date;
+
+public class Weathers {
+	private Date date;
+	private String weather;
+	private int temperature;
+	private String wind;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery</title>
+		<script src="jquery.1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		$(function() {
+			//alert('页面加载完毕后执行..');
+			$("a").click(function() {
+				alert("点击a标签时 执行....");
+			});
+			// 页面加载完毕后向body标签中
+			// 追加100个img标签 		
+			for (i=0; i<100; i++) {
+				$("body").append("<img src='../images/yeh.jpg'/>");
+			}
+			
+			$("img").css("width", "250px");
+			$("img").css("margin-right", "5px");
+			$("img").css({"padding":"2px", "border":"1px solid"});
+			
+			// 给btn1添加监听
+			$("#btn1").click(function() {
+				if ($("img").attr("src").indexOf("yeh.jpg")>=0) {
+					$("img").attr("src", "../images/fbb.jpg");
+				} else{
+					$("img").attr("src", "../images/yeh.jpg");
+				}
+			});
+			
+			// 给btn1添加监听
+			$("#btn2").click(function() {
+				$("img").fadeToggle("slow");
+			});
+			
+		});
+		</script>
+	</head>
+	<body>
+		<input type="button" value="有惊喜" id="btn1" />
+		<input type="button" value="有惊喜" id="btn2" />
+		<hr  />
+	<!--
+		<div id="a">
+			你点我呀~~~~
+		</div>
+		<br /><br /><br />
+		<a href="javascript:;">
+			你点我呀~~~~
+		</a>
+		<br /><br /><br />
+		<a href="javascript:;">
+			你点我呀~~~~
+		</a>
+	-->
+	</body>
+</html>

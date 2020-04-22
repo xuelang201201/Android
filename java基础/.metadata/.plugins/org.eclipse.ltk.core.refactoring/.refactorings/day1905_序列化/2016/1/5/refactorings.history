@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Student.java&apos; to &apos;day1906_ByteArrayIO/src/tarena.day1906&apos;&#x0D;&#x0A;- Original project: &apos;day1905_序列化&apos;&#x0D;&#x0A;- Destination element: &apos;day1906_ByteArrayIO/src/tarena.day1906&apos;&#x0D;&#x0A;- Original element: &apos;tarena.day1905.Student.java&apos;" description="Copy compilation unit" destination="=day1906_ByteArrayIO/src&lt;tarena.day1906" element1="/src&lt;tarena.day1905{Student.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1453711702435" units="1" version="1.0"/>
+</session>

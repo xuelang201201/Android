@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ContentDescription">
+        <ignore path="res/layout/contact_item.xml" />
+    </issue>
+    <issue id="HardcodedText">
+        <ignore path="res/layout/section_item.xml" />
+    </issue>
+    <issue id="SmallSp">
+        <ignore path="res/layout/contact_item.xml" />
+        <ignore path="res/layout/section_item.xml" />
+    </issue>
+</lint>

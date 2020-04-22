@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css3.html</title>
+		<style type="text/css">
+			.d1{ width: 100px; height: 100px;
+				border: 1px solid black;
+				background: url(../images/dahuang.jpg) center;
+				background-repeat: no-repeat;
+				/*background-size: 200px  200px;   宽度  高度*/
+				/*background-size: 200px;  设置宽度 */
+				/*background-size: 100%  100%; 宽度 高度 占比 */
+				background-size: cover;
+				border-radius: 200px;
+				/* 浏览器兼容 */
+				-webkit-border-radius: 200px;  /* safari  chrome */
+				-ms-border-radius: 200px; /* IE */
+				-o-border-radius: 200px; /* Opera */
+				-moz-border-radius: 200px; /* Firefox */
+				/*border-top-left-radius: 200px;
+				border-bottom-right-radius: 200px;*/
+				box-shadow: 0px 0px 100px cornflowerblue;	
+			}
+			input{
+				height: 26px; border-radius: 13px;
+				background: none;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="d1">
+		</div>
+		<input placeholder="请输入内容" type="search" name="" required="" placeholder="Search" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh-CN">
+	</body>
+</html>
+
+
+

@@ -1,0 +1,38 @@
+package cn.tedu.musiconline.biz;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cn.tedu.musiconline.entity.Music;
+import cn.tedu.musiconline.util.HttpUtils;
+
+import android.os.AsyncTask;
+
+public class MusicBiz extends AsyncTask<String, String, List<Music>> {
+
+	@Override
+	protected List<Music> doInBackground(String... params) {
+		String url = params[0];
+		// 发送http请求 HttpUtils
+		try {
+			HttpEntity entity = HttpUtils.send(HttpUtils.METHOD_GET, url, null);
+			// 把entity转换成json字符串
+			String json = EntityUtils.toString(entity);
+			// 解析json
+			//  {result:ok,  data:[{},{},{},{}]}
+			JSONObject obj = new JSONObject(json);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BaseAdapter.java&apos; to &apos;图库/src/cn.tedu.image_store&apos;&#x0D;&#x0A;- Original project: &apos;音乐播放器v3.0&apos;&#x0D;&#x0A;- Destination element: &apos;图库/src/cn.tedu.image_store&apos;&#x0D;&#x0A;- Original element: &apos;cn.tedu.music_player_3.adapter.BaseAdapter.java&apos;" description="Copy compilation unit" destination="=图库/src&lt;cn.tedu.image_store" element1="/src&lt;cn.tedu.music_player_3.adapter{BaseAdapter.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1456106177627" units="1" version="1.0"/>
+</session>

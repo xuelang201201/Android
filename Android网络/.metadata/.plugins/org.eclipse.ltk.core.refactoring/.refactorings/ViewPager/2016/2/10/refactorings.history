@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;layout&apos;&#x0D;&#x0A;- Original project: &apos;ViewPager&apos;&#x0D;&#x0A;- Destination element: &apos;layout&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     page_01.xml&#x0D;&#x0A;     page_02.xml&#x0D;&#x0A;     page_03.xml" description="Copy files" element1="res/layout/page_01.xml" element2="res/layout/page_02.xml" element3="res/layout/page_03.xml" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1456625887723" target="/ViewPager与Fragment/res/layout" units="0" version="1.0"/>
+</session>

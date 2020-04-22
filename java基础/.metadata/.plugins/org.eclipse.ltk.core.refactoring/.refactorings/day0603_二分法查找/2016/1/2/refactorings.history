@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 6 elements from project &apos;day0603_二分法查找&apos;&#x0D;&#x0A;- Original project: &apos;day0603_二分法查找&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     tarena.day0603.Test2.java&#x0D;&#x0A;     tarena.day0603.Test3.java&#x0D;&#x0A;     tarena.day0603.Test4.java&#x0D;&#x0A;     tarena.day0603.Test5.java&#x0D;&#x0A;     tarena.day0603.Test6.java&#x0D;&#x0A;     tarena.day0603.Test7.java" description="Delete elements" element1="/src&lt;tarena.day0603{Test3.java" element2="/src&lt;tarena.day0603{Test6.java" element3="/src&lt;tarena.day0603{Test7.java" element4="/src&lt;tarena.day0603{Test2.java" element5="/src&lt;tarena.day0603{Test5.java" element6="/src&lt;tarena.day0603{Test4.java" elements="6" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1452234034222" subPackages="false" version="1.0"/>
+</session>

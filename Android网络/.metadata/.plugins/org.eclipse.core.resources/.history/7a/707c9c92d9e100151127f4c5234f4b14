@@ -1,0 +1,8 @@
+package cn.tedu.musiconline.util;
+
+/**
+ * 解析json对象的工具类
+ */
+public class JSONParser {
+
+}

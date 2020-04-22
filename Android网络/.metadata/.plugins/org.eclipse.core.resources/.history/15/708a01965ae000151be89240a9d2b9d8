@@ -1,0 +1,93 @@
+package cn.tedu.httpclient;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+
+public class MainActivity extends Activity {
+
+	private EditText etDate;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		etDate = (EditText) findViewById(R.id.et_date);
+	}
+
+	/**
+	 * 为按钮添加监听
+	 */
+	public void doClick(View v) {
+		// 发送Http请求
+		new Thread() {
+			public void run() {
+				try {
+					//sendByGet();
+					sendByPost();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
+	
+	/**
+	 * 发送post请求，子线程中执行
+	 * @throws IOException
+	 */
+	private void sendByPost() throws IOException {
+		HttpClient client = new DefaultHttpClient();
+		String url = "http://172.16.44.131:8080/android_day02_jsp/loadFlight.jsp";
+		HttpGet post = new HttpGet(url);
+		// 设置post请求
+		post.addHeader("Content-Type","application/x-www-form-urlencoded");
+		List<NameValuePair> list = new ArrayList<NameValuePair>();
+		list.add(new BasicNameValuePair("date", etDate.getText().toString()));
+		HttpEntity reqEntity = new UrlEncodedFormEntity(list, "utf-8");
+		
+	}
+	
+	/**
+	 * 发送get请求，子线程中执行
+	 * @throws IOException
+	 */
+	private void sendByGet() throws IOException {
+		// 1. HttpClient
+		HttpClient client = new DefaultHttpClient();
+		// 2. HttpGet
+		String url = "http://172.16.44.131:8080/android_day02_jsp/loadFlight.jsp";
+		HttpGet get = new HttpGet(url);
+		// 3. excute()
+		HttpResponse resp = client.execute(get);
+		// 4. HttpResponse
+		if (resp.getStatusLine().getStatusCode() == 200) {
+			// 正常响应，获取实体中的xml文档
+			HttpEntity entity = resp.getEntity();
+			// 把entity转换成字符串
+			String xml = EntityUtils.toString(entity);
+			Log.i("info", "响应数据:"+xml);
+		} else {
+			// 返回的不是200
+			Log.e("info", "返回状态码不是200");
+		}
+	}
+}

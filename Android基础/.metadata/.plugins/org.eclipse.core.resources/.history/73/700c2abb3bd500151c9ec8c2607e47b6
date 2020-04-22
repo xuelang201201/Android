@@ -1,0 +1,172 @@
+package cn.tedu.music_player_3.service;
+
+import java.io.IOException;
+import java.util.List;
+
+import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.MediaPlayer;
+import android.os.IBinder;
+import cn.tedu.music_player_3.app.MusicPlayerApplication;
+import cn.tedu.music_player_3.entity.Music;
+
+/**
+ * 播放歌曲的Service
+ */
+public class PlayMusicService extends Service {
+	/**
+	 * 数据源
+	 */
+	private List<Music> musics;
+	/**
+	 * Application
+	 */
+	private MusicPlayerApplication app;
+	/**
+	 * 播放工具
+	 */
+	private MediaPlayer player;
+	/**
+	 * 当前播放的歌曲的索引
+	 */
+	private int currentMusicIndex;
+	/**
+	 * 暂停时播放到的位置
+	 */
+	private int pausePosition;
+	/**
+	 * 广播接收者
+	 */
+	private BroadcastReceiver receiver;
+	
+	@Override
+	public void onCreate() {
+		// 获取数据源
+		app = (MusicPlayerApplication) getApplication();
+		musics = app.getMusics();
+		// 初始化播放工具
+		player = new MediaPlayer();
+		// 注册广播接收者
+		receiver = new InnerReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(ACTION_PLAY_OR_PAUSE);
+		filter.addAction("PREVIOUS");
+		filter.addAction("NEXT");
+		registerReceiver(receiver, filter);
+	}
+
+	private class InnerReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// 获取广播中的Intent的Action
+			String action = intent.getAction();
+			// 判断Action
+			if ("PLAY_OR_PAUSE".equals(action)) {
+				// 判断歌曲是否正在播放
+				if (player.isPlaying()) {
+					// 正在播放，则暂停
+					pause();
+				} else {
+					// 没有在播放，则播放
+					play();
+				}
+			} else if ("PREVIOUS".equals(action)) {
+				// 播放上一首
+				previous();
+			} else if ("NEXT".equals(action)) {
+				// 播放下一首
+				next();
+			}
+		}
+	}
+	
+	/**
+	 * 播放
+	 */
+	private void play() {
+		try {
+			player.reset();
+			player.setDataSource(musics.get(currentMusicIndex).getPath());
+			player.prepare();
+			player.seekTo(pausePosition);
+			player.start();
+			
+			// 发送广播，告知Activity正在播放
+			Intent intent = new Intent();
+			intent.setAction("SET_PLAY_STATE");
+			sendBroadcast(intent);
+			
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	} 
+	
+	/**
+	 * 暂停
+	 */
+	private void pause() {
+		if (player.isPlaying()) {
+			player.pause();
+			pausePosition = player.getCurrentPosition();
+			
+			// 发送广播，告知Activity已经暂停
+			Intent intent = new Intent();
+			intent.setAction("SET_PAUSE_STATE");
+			sendBroadcast(intent);
+		}
+	}
+	
+	/**
+	 * 播放上一首
+	 */
+	private void previous() {
+		currentMusicIndex--;
+		if (currentMusicIndex < 0) {
+			currentMusicIndex = musics.size() - 1;
+		}
+		pausePosition = 0;
+		play();
+	}
+	
+	/**
+	 * 播放下一首
+	 */
+	private void next() {
+		currentMusicIndex++;
+		if (currentMusicIndex > musics.size()) {
+			currentMusicIndex = 0;
+		}
+		pausePosition = 0;
+		play();
+	}
+	
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		// 设置当前Service为非粘性的
+		return START_NOT_STICKY;
+	}
+	
+	@Override
+	public void onDestroy() {
+		// 释放播放工具的资源
+		player.release();
+		// 取消注册广播接收者
+		unregisterReceiver(receiver);
+	}
+	
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
+
+}

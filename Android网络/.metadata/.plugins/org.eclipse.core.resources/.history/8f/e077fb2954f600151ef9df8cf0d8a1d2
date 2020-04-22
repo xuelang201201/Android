@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <include
+        android:id="@+id/headerview"
+        layout="@layout/header_view" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerview" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+    <FrameLayout
+        android:id="@+id/chartcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerview"
+        android:background="#ffffff"
+        android:visibility="gone" >
+    </FrameLayout>
+
+</RelativeLayout>

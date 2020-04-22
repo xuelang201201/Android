@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/rl_layout_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/main_color" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/login"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/rl_layout_textsize" />
+    </RelativeLayout>
+
+    <!-- 表单区域 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_form_title_bar"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/rl_form_background_color"
+        android:paddingBottom="@dimen/rl_form_border_width"
+        android:paddingTop="@dimen/rl_form_border_width" >
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="@dimen/tv_layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_marginBottom="@dimen/form_border_width"
+            android:layout_marginRight="@dimen/form_border_width"
+            android:background="@color/background_color"
+            android:gravity="left|center"
+            android:paddingLeft="@dimen/paddingleft"
+            android:text="@string/username"
+            android:textSize="@dimen/textsize" />
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height"
+            android:layout_marginBottom="@dimen/form_border_width"
+            android:layout_toRightOf="@+id/tv_username"
+            android:background="@color/background_color"
+            android:paddingLeft="@dimen/paddingleft"
+            android:textSize="@dimen/textsize" />
+
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="@dimen/tv_layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tv_username"
+            android:layout_marginRight="@dimen/form_border_width"
+            android:background="@color/background_color"
+            android:gravity="left|center"
+            android:paddingLeft="@dimen/paddingleft"
+            android:text="@string/password"
+            android:textSize="@dimen/textsize" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignTop="@+id/tv_password"
+            android:layout_marginBottom="@dimen/form_border_width"
+            android:layout_toRightOf="@+id/tv_password"
+            android:background="@color/background_color"
+            android:paddingLeft="@dimen/paddingleft"
+            android:textSize="@dimen/textsize" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_below="@+id/rl_form"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/button_shape"
+        android:text="@string/login"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/textsize" />
+
+</RelativeLayout>

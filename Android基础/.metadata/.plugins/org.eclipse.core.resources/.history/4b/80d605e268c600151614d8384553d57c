@@ -1,0 +1,5 @@
+package cn.tedu.listview_baseadapter;
+
+public class Contact {
+
+}

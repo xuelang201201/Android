@@ -1,0 +1,69 @@
+package cn.tedu.httpclient;
+
+import java.io.IOException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
+
+public class MainActivity extends Activity {
+
+	private EditText etDate;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		etDate = (EditText) findViewById(R.id.et_date);
+	}
+
+	/**
+	 * 为按钮添加监听
+	 */
+	public void doClick() {
+		// 发送Http请求
+		new Thread() {
+			public void run() {
+				try {
+					sendByGet();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
+
+	/**
+	 * 发送get请求，子线程中执行
+	 * @throws IOException
+	 */
+	private void sendByGet() throws IOException {
+		// 1. HttpClient
+		HttpClient client = new DefaultHttpClient();
+		// 2. HttpGet
+		String url = "http://localhost:8080/android_day02_jsp/loadFlight.jsp";
+		HttpGet get = new HttpGet(url);
+		// 3. excute()
+		HttpResponse resp = client.execute(get);
+		// 4. HttpResponse
+		if (resp.getStatusLine().getStatusCode() == 200) {
+			// 正常响应，获取实体中的xml文档
+			HttpEntity entity = resp.getEntity();
+			// 把entity转换成字符串
+			String xml = EntityUtils.toString(entity);
+			Log.i("info", "响应数据:"+xml);
+		} else {
+			// 返回的不是200
+			Log.e("info", "返回状态码不是200");
+		}
+	}
+}

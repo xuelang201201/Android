@@ -1,0 +1,42 @@
+package cn.tedu.android_day03_ems;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+
+public class ListEmpActivity extends Activity {
+
+	private ListView lvEmp;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_list_emp);
+		
+		setViews();
+		
+		// 发送http请求，访问所有的员工数据
+		new Thread() {
+			public void run() {
+				loadEmps();
+			}
+		}.start();
+	}
+
+	/**
+	 * 异步执行，查询所有的员工信息 
+	 */
+	public void loadEmps() {
+		// 1. HttpClient
+		HttpClient client = new DefaultHttpClient();
+		// 2. HttpGet
+		String url = "http://172.16.44.131:8080/ems/WebContent/login.html";
+	}
+
+	private void setViews() {
+		lvEmp = (ListView) findViewById(R.id.lv_list_emp);
+	}
+}

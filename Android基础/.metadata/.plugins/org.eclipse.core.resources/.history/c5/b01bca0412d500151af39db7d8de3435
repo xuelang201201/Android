@@ -1,0 +1,15 @@
+package cn.tedu.music_player_3.dal;
+
+import cn.tedu.music_player_3.entity.Music;
+
+public class MusicDaoFactory {
+	/**
+	 * 私有构造方法
+	 */
+	private MusicDaoFactory() {
+	}
+	
+	public static IDao<Music> newInstance() {
+		return new LocalMusicDao();
+	}
+}

@@ -1,0 +1,61 @@
+package cn.tedu.android_day03_ems;
+
+import java.io.IOException;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ListView;
+
+public class ListEmpActivity extends Activity {
+
+	private ListView lvEmp;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_list_emp);
+		
+		setViews();
+		
+		// 发送http请求，访问所有的员工数据
+		new Thread() {
+			public void run() {
+				try {
+					loadEmps();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
+
+	/**
+	 * 异步执行，查询所有的员工信息 
+	 * @throws IOException 
+	 */
+	public void loadEmps() throws IOException {
+		// 1. HttpClient
+		HttpClient client = new DefaultHttpClient();
+		// 2. HttpGet
+		String url = "http://172.16.44.131:8080/ems/login.html";
+		HttpGet get = new HttpGet(url);
+		// 3. execute()
+		HttpResponse resp = client.execute(get);
+		// 4. 解析json
+		String json = EntityUtils.toString(resp.getEntity());
+		Log.i("info", "json:" + json);
+		// 5. 更新UI
+	}
+
+	private void setViews() {
+		lvEmp = (ListView) findViewById(R.id.lv_list_emp);
+	}
+}

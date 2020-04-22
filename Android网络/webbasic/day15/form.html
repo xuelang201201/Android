@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>form.html表单验证</title>
+<script type="text/javascript">
+//验证账号格式是否正确
+function checkName() {
+	// 1.获取文本框中的value
+	var name = document.getElementById("name");
+	var val = name.value;
+	// 2.判断格式是否正确
+	// 3.根据不同的结果 修改页面
+	var span = document.getElementById("name_span");
+	//if(val.length>=6 && val.length<=15){ //正确
+	var pattern = /^\w{6,15}$/;
+	if(pattern.test(val)){
+		span.innerHTML="格式正确!";
+		span.style.color="green";
+		return true;
+	}else{ //错误 
+		span.innerHTML="格式错误(6~15字符)";
+		span.style.color="red";
+		return false;
+	}
+
+}
+
+function checkPwd() {
+	// 1.获取文本框中的value
+	var name = document.getElementById("pwd");
+	var val = pwd.value;
+	// 2.判断格式是否正确
+	// 3.根据不同的结果 修改页面
+	var span = document.getElementById("pwd_span");
+	//if(val.length>=6 && val.length<=15){ //正确
+	var pattern = /^\d{6}$/;
+	if(pattern.test(val)){
+		span.innerHTML="格式正确!";
+		span.style.color="green";
+		return true;
+	}else{ //错误 
+		span.innerHTML="格式错误(6位数字)";
+		span.style.color="red";
+		return false;
+	}
+}
+	
+function checkForm() {
+	return checkName() && checkPwd();
+}
+</script>
+</head>
+<body>
+	<h3>登录</h3>
+	<form onsubmit="return checkForm();" action=""></form>
+	<form action="login.do" method="get">
+		账号： 
+		<input id="name" onblur="checkName()" type="text" name="name"> 
+		<span id="name_span"></span>
+		<br />
+		<br /> 
+		密码：
+		<input id="pwd" onblur="checkPwd()" type="password" name="pwd">
+		<span id="pwd_span"></span>
+		<br /> 
+		<br />
+		<input type="submit" value="提交" />
+	</form>
+</body>
+</html>

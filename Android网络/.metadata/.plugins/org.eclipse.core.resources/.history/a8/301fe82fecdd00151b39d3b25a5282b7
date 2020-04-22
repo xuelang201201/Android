@@ -1,0 +1,25 @@
+package cn.tedu.custom_view;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.TextView;
+
+public class CustomTextView extends TextView {
+
+	// 带 1 个参数的构造方法，用于在程序中直接创建控件的对象
+	public CustomTextView(Context context) {
+		super(context);
+	}
+
+	// 带 2/3 个参数的构造方法，用于在布局文件中
+	public CustomTextView(Context context, AttributeSet attrs) {
+		this(context, attrs, 0);
+	}
+
+	public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		
+		// 
+	}
+	
+}

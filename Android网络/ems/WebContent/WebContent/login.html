@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dom02.html</title>
+<script type="text/javascript" src="my.js"></script>
+<script type="text/javascript">
+function checkName(){
+	//1.获取文本框中的数据 
+	var name=document.getElementById("name").value;
+	//2.验证内容是否符合正确格式 
+	//3.根据不同的验证结果 提示不同的信息
+	var span=document.getElementById("name_s");
+	//var exp=/^\w{6,15}$/;
+	//if(exp.test(name)){
+	if(name.length>=6 && name.length<=10){
+		//正确
+		span.innerHTML="格式正确";
+		span.style.color="green";
+		return true;
+	}else {
+		//错误
+		span.innerHTML="格式错误(6-15字符)";
+		span.style.color="red";
+		return false;
+	}
+}
+
+	
+function checkPwd(){
+	//1.获取文本框中的数据 
+	var pwd=document.getElementById("pwd").value;
+	//2.验证内容是否符合正确格式 
+	//3.根据不同的验证结果 提示不同的信息
+	var span=document.getElementById("pwd_s");
+	//if(name.length>=6 && name.length<=10){
+	var exp=/^\d{6}$/;
+	if(exp.test(pwd)){
+		//正确
+		span.innerHTML="格式正确";
+		span.style.color="green";
+		return true;
+	}else {
+		//错误
+		span.innerHTML="格式错误(6-10字符)";
+		span.style.color="red";
+		return false;
+	}
+}
+//阻止表单的提交 
+function checkForm(){
+	return checkName() && checkPwd();
+}
+</script>
+</head>
+<body>
+	<h3>表单验证</h3>
+	<form action="login.do" method="post" onsubmit="return checkForm();">
+	登录账号：
+	<input id="name" onblur="checkName()" type="text" name="name" />
+	<span id="name_s"></span>
+	<br/><br/>
+	登录密码：
+	<input id="pwd" onblur="checkPwd()" type="password" name="pwd" />
+	<span id="pwd_s"></span>
+	<br/><br/>
+	<input type="submit" value="登录"/>
+	</form>
+</body>
+</html>
+
+
+

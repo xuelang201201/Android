@@ -1,0 +1,11 @@
+package cn.tedu.weather.entity;
+
+public class MyWeather {
+ 	String reason;
+ 	Result result;
+ 	int error_code;
+ 	
+ 	public static class Result {
+ 		
+ 	}
+}

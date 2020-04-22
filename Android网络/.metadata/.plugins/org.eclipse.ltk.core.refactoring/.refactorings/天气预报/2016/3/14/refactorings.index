@@ -1,0 +1,9 @@
+1459215551638	Move compilation unit
+1459222889511	Delete element
+1459234062631	Rename resource 'header_view_item.xml'
+1459251719900	Delete element
+1459307380661	Extract method 'getWeather'
+1459319005561	Move folder
+1459319030941	Move folder
+1459319053759	Delete element
+1459340231362	Rename type 'WeatherEntity'

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">不文明记录</string>
+    <string name="crime_title_hint">为该不文明现象取个名字。</string>
+    <string name="crime_title_label">标题</string>
+    <string name="crime_details_label">时间</string>
+    <string name="crime_solved_label">已解决</string>
+    <string name="date_picker_title">不文明现象出现时间：</string>
+    <string name="date_or_time_pick_ok">确定</string>
+    <string name="new_crime">新的记录</string>
+    <string name="show_subtitle">显示子标题</string>
+    <string name="hide_subtitle">隐藏子标题</string>
+    <string name="subtitle_format">%1$s 条记录</string>
+    <string name="crime_suspect_text">选择嫌疑人</string>
+    <string name="crime_report_text">发送报告</string>
+    <string name="crime_report">%1$s!
+        出现日期： %2$s。状态：%3$s，嫌疑人：%4$s
+    </string>
+    <string name="crime_report_solved">已解决</string>
+    <string name="crime_report_unsolved">未解决</string>
+    <string name="crime_report_no_suspect">无。</string>
+    <string name="crime_report_suspect">%s。</string>
+    <string name="crime_report_subject">不文明记录事件报告</string>
+    <string name="send_report">发送不文明报告</string>
+</resources>

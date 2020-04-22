@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">day1101_航空订票</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_branch_search">BranchSearchActivity</string>
+    <string name="title_activity_flight_search">FlightSearchActivity</string>
+
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_friends_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/activity_friends_button_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_tab_background" >
+
+        <com.bignerdranch.android.friends.view.MyTabIcon
+            android:id="@+id/activity_friends_button_call_logs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon_icon="@drawable/ic_call_logs"
+            app:icon_textcontent="@string/call_log"
+            app:icon_textsize="10sp" />
+
+        <com.bignerdranch.android.friends.view.MyTabIcon
+            android:id="@+id/activity_friends_button_contacts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon_icon="@drawable/ic_contacts"
+            app:icon_textcontent="@string/contact"
+            app:icon_textsize="10sp" />
+
+        <com.bignerdranch.android.friends.view.MyTabIcon
+            android:id="@+id/activity_friends_button_sms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon_icon="@drawable/ic_sms"
+            app:icon_textcontent="@string/sms"
+            app:icon_textsize="10sp" />
+
+        <com.bignerdranch.android.friends.view.MyTabIcon
+            android:id="@+id/activity_friends_button_dial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon_icon="@drawable/ic_dialpad"
+            app:icon_textcontent="@string/dial"
+            app:icon_textsize="10sp" />
+
+    </LinearLayout>
+</LinearLayout>

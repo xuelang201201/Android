@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/img01g_02" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="138"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/img07_06" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/img07_03" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lvCalllog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:listSelector="@android:color/transparent"
+        android:layout_below="@+id/relativeLayout1"
+        android:background="@drawable/img02t_02">
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/rlKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/img07_02"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" 
+        android:visibility="invisible">
+
+        <GridView
+            android:id="@+id/gvKeyboard"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:numColumns="3" >
+        </GridView>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/img07_15" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

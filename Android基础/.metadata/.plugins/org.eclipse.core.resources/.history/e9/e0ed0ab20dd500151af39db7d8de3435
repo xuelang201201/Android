@@ -1,0 +1,12 @@
+package cn.tedu.music_player_3.app;
+
+import java.util.List;
+
+/**
+ * 获取数据的接口
+ *
+ * @param <T> 数据的类型
+ */
+public interface IDao<T> {
+	List<T> getData();
+}

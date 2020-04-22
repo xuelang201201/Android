@@ -1,0 +1,40 @@
+package tarena.day1902;
+
+public class Test2 {
+	public static void main(String[] args) {
+		byte[] a;
+		String s;
+		String enc;
+		
+		a = new byte[]{};
+		enc = "д╛хо";
+		s = new String(a);
+		System.out.println(s);
+		
+		a = new byte[]{};
+		enc = "GBK";
+		s = new String(a);
+		System.out.println(s);
+		
+		a = new byte[]{};
+		enc = "GB2312";
+		s = new String(a);
+		System.out.println(s);
+		
+		a = new byte[]{};
+		enc = "UTF-8";
+		s = new String(a);
+		System.out.println(s);
+		
+		a = new byte[]{};
+		enc = "UTF-16Be";
+		s = new String(a);
+		System.out.println(s);
+		
+		a = new byte[]{};
+		enc = "UTF-16Le";
+		s = new String(a);
+		System.out.println(s);
+		
+	}
+}

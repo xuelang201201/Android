@@ -1,0 +1,16 @@
+package tarena.day1906;
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class Test3 {
+	public static void main(String[] args) throws IOException {
+		/*
+		 *    -DataInputStream
+		 *  -FileInputStream
+		 * f8
+		 */
+		DataInputStream dis = new DataInputStream(new FileInputStream("d:/abc/f8"));
+	}
+}

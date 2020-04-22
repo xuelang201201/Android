@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>js.html</title>
+<script type="text/javascript">
+	/* JavaScript的多行注释 */
+	function doClick() {
+		// js的单行注释
+		// 调用window对象的alert方法弹窗
+		// 在控制台打印文字
+		console.log("Hello JavaScript！");
+		console.log("Hello Android！");
+		console.log("Hello World！");
+	}
+
+	// 测试基本类型
+	function doClick2() {
+		// 声明变量
+		var n = 2000.22;
+		console.log("n:" + n + "  type:" + (typeof n));
+		// 给n重新赋值
+		n = " \"Hello World!\" ";
+		console.log("n:" + n + "  type:" + (typeof n));
+		n = ' Hello Android!';
+		n = '"A"';
+		console.log("n:" + n + "  type:" + (typeof n));
+		// boolean类型
+		n = true;
+		console.log("n:" + n + "  type:" + (typeof n));
+		// undefined 未定义
+		var n2;
+		console.log("n2:" + n2 + "  type:" + (typeof n2));
+	}
+
+	// 测试基本数据类型之间的转换
+	function doClick3() {
+		var str = "abc8888";
+		var r = str + 1112; // 88881112
+		console.log("r:" + r);
+		r = parseInt(str) + 1112;
+		console.log("r:" + r); // 10000
+	}
+
+	// 测试boolean类型的解释规则
+	function doClick4() {
+		var flag = true;
+		flag = 0; // 是0为false 否则都是true 
+		flag = ""; // 非空字符串为true，空字符串为false
+		flag = null; // null 和 undefined为false 
+		var flag2;
+		if (flag) {
+			alert("这真的是真的...");
+		}
+	}
+
+	// 测试数学运算符 
+	function doClick5() {
+		var num = 10;
+		console.log("num/3:" + num / 3);
+		num = "100";
+		console.log("num/3:" + num / 3);
+	}
+
+	// 测试比较运算符
+	function doClick6() {
+		var n1 = "1000";
+		var n2 = 1000;
+		console.log("n1==n2:" + (n1 == n2)); // ==： 直接比较两个变量保存的内容
+		console.log("n1===n2:" + (n1 === n2)); // ===： 先比较类型，然后比较内容
+	}
+
+	// 验证13位条形码 
+	function doClick7() {
+		var code = "692226644963";
+		var jsum = 0;
+		var osum = 0;
+		for (i = 0; i <= code.length - 1; i += 2) {
+			jsum += parseInt(code.charAt(i));
+			osum += parseInt(code.charAt(i + 1));
+		}
+		var r = jsum + osum * 3;
+		r = (10 - r % 10) % 10;
+		alert("最后一位：" + r);
+	}
+
+	// 测试数组
+	function doClick8() {
+		var ary = [ 888, "HELLO", true, [ "AA", "BB" ] ];
+		console.log("ary.length:" + ary.length);
+		console.log("ary[3][1]:" + ary[3][1]);
+		console.log("ary.toString():" + ary.toString());
+		// 修改
+		ary[1] = "HELLO JAVASCRIPT";
+		console.log("ary.toString():" + ary.toString());
+		console.log("------------------------------");
+		ary = new Array(); // 重新创建数组
+		console.log("ary.length:" + ary.length); // 0
+		// 添加元素
+		ary[0] = "Hello JS";
+		console.log("length:" + ary.length + " ary:" + ary);
+		ary[ary.length] = "Hello World"; // 追加元素
+		console.log("length:" + ary.length + " ary:" + ary);
+
+		ary[10] = "HeHe";
+		console.log("length:" + ary.length + " ary:" + ary);
+		console.log("ary[6]:" + ary[6]);
+	}
+
+	// 身份证号码最后一位验证
+	function doClick9() {
+		var id = "45020219850416269  X";
+		var ary = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 ];
+		var sum = 0;
+		var x;
+		sum = 4 * 7 + 5 * 9 + 0 * 10 + 2 * 5 + 0 * 8 + 2 * 4 + 1 * 2 + 9 * 1 + 8 * 6
+				+ 5 * 3 + 0 * 7 + 4 * 9 + 1 * 10 + 6 * 5 + 2 * 8 + 6 * 4 + 9
+				* 2;
+		switch (sum % 11) {
+		case 0:
+			x = 1;
+			break;
+		case 1:
+			x = 0;
+			break;
+		case 2:
+			x = 'X';
+			break;
+		case 3:
+			x = 9;
+			break;
+		case 4:
+			x = 8;
+			break;
+		case 5:
+			x = 7;
+			break;
+		case 6:
+			x = 6;
+			break;
+		case 7:
+			x = 5;
+			break;
+		case 8:
+			x = 4;
+			break;
+		case 9:
+			x = 3;
+			break;
+		case 10:
+			x = 2;
+			break;
+		}
+		alert("最后一位身份证号：" + x);
+	}
+</script>
+</head>
+<body>
+	<a href="javascript:;" onclick="doClick9()"> 身份证号码最后一位验证</a>
+	<hr />
+	<a href="javascript:;" onclick="doClick8()"> 测试数组</a>
+	<hr />
+	<a href="javascript:;" onclick="doClick7()"> 条形验证码</a>
+	<hr />
+	<a href="javascript:;" onclick="doClick6()"> 测试比较运算符</a>
+	<hr />
+	<a href="javascript:;" onclick="doClick5()"> 测试数学运算符</a>
+	<hr />
+	<a href="javascript:;" onclick="doClick4()"> 测试boolean类型的解释规则</a>
+	<hr />
+	<a href="javascript:;" onclick="doClick3()"> 测试基本类型之间的转换 </a>
+	<hr />
+	<a href="javascript:;" onclick="doClick2()"> 测试基本数据类型 </a>
+	<hr />
+	<a href="javascript:;" onclick="doClick()"> 有本事点我呀~~ </a>
+	<hr />
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/headerview"
+        layout="@layout/contact_header_view" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_sms_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/ic_footer_bg"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/activity_sms_add"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_add_gray"
+            android:layout_gravity="bottom"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:layout_marginBottom="10dp" />
+
+        <EditText
+            android:id="@+id/activity_sms_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:ems="10"
+            android:maxLines="5"
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:hint="@null"
+            android:background="@drawable/ic_input"/>
+
+        <Button
+            android:id="@+id/activity_sms_send"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_send"
+            android:layout_gravity="bottom"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_sms_more_layout_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+package cn.tedu.musiconline.biz;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+
+import cn.tedu.musiconline.entity.Music;
+import cn.tedu.musiconline.util.HttpUtils;
+
+import android.os.AsyncTask;
+
+public class MusicBiz extends AsyncTask<String, String, List<Music>> {
+
+	@Override
+	protected List<Music> doInBackground(String... params) {
+		String url = params[0];
+		// ∑¢ÀÕhttp«Î«Û HttpUtils
+		try {
+			HttpEntity entity = HttpUtils.send(HttpUtils.METHOD_GET, url, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

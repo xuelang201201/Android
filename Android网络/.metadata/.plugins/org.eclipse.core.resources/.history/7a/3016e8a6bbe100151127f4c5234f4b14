@@ -1,0 +1,5 @@
+package cn.tedu.musiconline.entity;
+
+public class Music {
+
+}

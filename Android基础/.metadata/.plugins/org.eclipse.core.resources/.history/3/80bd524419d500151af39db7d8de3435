@@ -1,0 +1,13 @@
+package cn.tedu.music_player_3.adapter;
+
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+
+public class BaseAdapter<T> extends android.widget.BaseAdapter {
+	private Context context;
+	private LayoutInflater inflater;
+	private List<T> data;
+	
+}

@@ -1,0 +1,17 @@
+package cn.tedu.music_player_3.entity;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+
+/**
+ * ²¥·Å¸èÇúµÄService
+ */
+public class PlayMusicService extends Service {
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
+
+}

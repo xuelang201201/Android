@@ -1,0 +1,21 @@
+package cn.tedu.musiconline.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+import cn.tedu.musiconline.R;
+
+public class MainActivity extends Activity {
+	
+	private ListView lvMusics;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		setViews();
+		// 启动异步任务，发送请求，获取音乐列表
+		
+	}
+}

@@ -1,0 +1,22 @@
+package cn.tedu.android_day03_ems;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+
+public class ListEmpActivity extends Activity {
+
+	private ListView lvEmp;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_list_emp);
+		
+		setViews();
+	}
+
+	private void setViews() {
+		lvEmp = (ListView) findViewById(R.id.lv_list_emp);
+	}
+}

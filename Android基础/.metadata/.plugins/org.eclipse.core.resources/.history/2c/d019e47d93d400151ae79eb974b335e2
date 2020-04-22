@@ -1,0 +1,5 @@
+package cn.tedu.broadcast_receiver;
+
+public class CustomReceiver {
+
+}

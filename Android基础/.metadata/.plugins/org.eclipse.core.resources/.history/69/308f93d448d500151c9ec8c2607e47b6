@@ -1,0 +1,260 @@
+package cn.tedu.music_player_3.service;
+
+import java.io.IOException;
+import java.util.List;
+
+import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.MediaPlayer;
+import android.os.IBinder;
+import cn.tedu.music_player_3.app.MusicPlayerApplication;
+import cn.tedu.music_player_3.entity.Music;
+import cn.tedu.music_player_3.util.Consts;
+
+/**
+ * 播放歌曲的Service
+ */
+public class PlayMusicService extends Service implements Consts {
+	/**
+	 * 数据源
+	 */
+	private List<Music> musics;
+	/**
+	 * Application
+	 */
+	private MusicPlayerApplication app;
+	/**
+	 * 播放工具
+	 */
+	private MediaPlayer player;
+	/**
+	 * 当前播放的歌曲的索引
+	 */
+	private int currentMusicIndex;
+	/**
+	 * 暂停时播放到的位置
+	 */
+	private int pausePosition;
+	/**
+	 * 广播接收者
+	 */
+	private BroadcastReceiver receiver;
+	/**
+	 * 提交播放进度的线程的循环条件
+	 */
+	private boolean isRunning;
+	/**
+	 * 更新进度的线程
+	 */
+	private UpdateThread updateThread;
+
+	@Override
+	public void onCreate() {
+		// 获取数据源
+		app = (MusicPlayerApplication) getApplication();
+		musics = app.getMusics();
+		// 初始化播放工具
+		player = new MediaPlayer();
+		// 注册广播接收者
+		receiver = new InnerReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(ACTION_PLAY_OR_PAUSE);
+		filter.addAction(ACTION_PREVIOUS);
+		filter.addAction(ACTION_NEXT);
+		filter.addAction(ACTION_PLAY);
+		filter.addAction(ACTION_PLAY_FROM_PERCENT);
+		registerReceiver(receiver, filter);
+	}
+
+	private class InnerReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// 获取广播中的Intent的Action
+			String action = intent.getAction();
+			// 判断Action
+			if (ACTION_PLAY_OR_PAUSE.equals(action)) {
+				// 判断歌曲是否正在播放
+				if (player.isPlaying()) {
+					// 正在播放，则暂停
+					pause();
+				} else {
+					// 没有在播放，则播放
+					play();
+				}
+			} else if (ACTION_PREVIOUS.equals(action)) {
+				// 播放上一首
+				previous();
+			} else if (ACTION_NEXT.equals(action)) {
+				// 播放下一首
+				next();
+			} else if (ACTION_PLAY.equals(action)) {
+				// 播放指定的歌曲
+				int position = intent.getIntExtra(EXTRA_POSITION, 0);
+				play(position);
+			} else if (ACTION_PLAY_FROM_PERCENT.equals(action)) {
+				// 从指定的百分比位置开始播放
+				float percent = intent.getFloatExtra(EXTRA_PERCENT, 0F);
+				play(percent);
+			}
+		} 
+	}
+
+	/**
+	 * 开启更新进度的线程
+	 */
+	private void startUpdateThread() {
+		if (updateThread == null) {
+			updateThread = new UpdateThread();
+			isRunning = true;
+			updateThread.start();
+		}
+	}
+	
+	/**
+	 * 停止更新线程
+	 */
+	private void stopUpdateThread() {
+		if (updateThread != null) {
+			isRunning = false;
+			updateThread = null;
+		}
+	}
+	
+	private class UpdateThread extends Thread {
+		@Override
+		public void run() {
+			Intent intent = new Intent();
+			while (isRunning) {
+				intent.setAction(ACTION_UPDATE_PROGRESS);
+				intent.putExtra(EXTRA_CURRENT_POSITON, player.getCurrentPosition());
+				intent.putExtra(EXTRA_PERCENT, player.getDuration() == 0 ? 0 : player.getCurrentPosition() * 100 / player.getDuration() );
+				sendBroadcast(intent);
+				
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	/**
+	 * 播放
+	 */
+	private void play() {
+		try {
+			player.reset();
+			player.setDataSource(musics.get(currentMusicIndex).getPath());
+			player.prepare();
+			player.seekTo(pausePosition);
+			player.start();
+
+			// 发送广播，告知Activity正在播放
+			Intent intent = new Intent();
+			intent.setAction(ACTION_SET_PLAY_STATE);
+			intent.putExtra(EXTRA_POSITION, currentMusicIndex); // 播放的是第?首
+			intent.putExtra(EXTRA_DURATION, player.getDuration());
+			sendBroadcast(intent);
+			// 开启更新进度的线程
+			startUpdateThread();
+			
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	} 
+
+	/**
+	 * 播放指定的歌曲
+	 * @param position 歌曲的位置/索引
+	 */
+	private void play(int position) {
+		// if(position < 0 || position >= musics.size() - 1) {
+		// position = 0;
+		// }
+		currentMusicIndex = position;
+		pausePosition = 0;
+		play();
+	}
+	
+	/**
+	 * 从指定的位置开始播放歌曲
+	 * @param percent 播放位置的百分比，例如：0.65
+	 */
+	private void play(float percent) {
+		pausePosition = (int) (player.getDuration() * percent);
+		play();
+	}
+
+	/**
+	 * 暂停
+	 */
+	private void pause() {
+		if (player.isPlaying()) {
+			player.pause();
+			pausePosition = player.getCurrentPosition();
+
+			// 发送广播，告知Activity已经暂停
+			Intent intent = new Intent();
+			intent.setAction(ACTION_SET_PAUSE_STATE);
+			sendBroadcast(intent);
+			
+			// 停止更新进度的线程
+			stopUpdateThread();
+		}
+	}
+
+	/**
+	 * 播放上一首
+	 */
+	private void previous() {
+		currentMusicIndex--;
+		if (currentMusicIndex < 0) {
+			currentMusicIndex = musics.size() - 1;
+		}
+		pausePosition = 0;
+		play();
+	}
+
+	/**
+	 * 播放下一首
+	 */
+	private void next() {
+		currentMusicIndex++;
+		if (currentMusicIndex > musics.size()) {
+			currentMusicIndex = 0;
+		}
+		pausePosition = 0;
+		play();
+	}
+
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		// 设置当前Service为非粘性的
+		return START_NOT_STICKY;
+	}
+
+	@Override
+	public void onDestroy() {
+		// 释放播放工具的资源
+		player.release();
+		// 取消注册广播接收者
+		unregisterReceiver(receiver);
+	}
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
+
+}

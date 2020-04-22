@@ -1,0 +1,10 @@
+package cn.tedu.myy.entity;
+
+public class PageModule {
+	private int id;
+	private String name;
+	private String content;
+	private String snapshot;
+	
+	
+}

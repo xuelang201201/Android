@@ -1,0 +1,71 @@
+package cn.tedu.progress;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+
+public class MainActivity extends Activity implements View.OnClickListener {
+
+	private ProgressBar pbProgress;
+	private Button btnAddProgress;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		pbProgress = (ProgressBar) findViewById(R.id.pb_progress);
+		btnAddProgress = (Button) findViewById(R.id.btn_add_progress);
+
+		btnAddProgress.setOnClickListener(this);
+	}
+
+	private int progress;
+
+	private class InnerThread extends Thread {
+		private class Runner implements Runnable {
+
+			@Override
+			public void run() {
+				pbProgress.setProgress(progress);
+				if(progress >= 100) {
+					btnAddProgress.setEnabled(true);
+				}
+			}
+		}
+
+		@Override
+		public void run() {
+			Runner runner = new Runner();
+			for (int i = 1; i <= 100; i++) {
+				progress = i;
+				runOnUiThread(runner);
+
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		//点击按钮自动增加进度
+		InnerThread thread = new InnerThread();
+		thread.start();
+		btnAddProgress.setEnabled(false);
+
+
+		//点击按钮增加进度
+		/*progress += 5;
+		pbProgress.setProgress(progress);
+
+		if(progress >= 100) {
+			btnAddProgress.setEnabled(false);
+		}*/
+	}
+}

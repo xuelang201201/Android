@@ -1,0 +1,17 @@
+package cn.tedu.weather.util;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
+public class HttpUtil {
+	// 创建一个Volley的访问队列
+	public static RequestQueue queue;
+	
+	public void getWeather(Context context) {
+		// 1) 判断有没有队列
+		if (queue == null) {
+			// 如果没有队列，就创建请求队列
+			queue = Volley.newRequestQueue(context);
+		}
+	}
+}

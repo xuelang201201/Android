@@ -1,0 +1,23 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 标题栏 -->
+    <style name="TitleBar">
+        <item name="android:background">@color/main_color</item>
+        <item name="android:minHeight">20dp</item>
+    </style>
+
+    <!-- 标题栏文字 -->
+    <style name="TileBarText">
+        
+    </style>
+    
+    <!-- 表单区域 -->
+    <style name="Form">
+        <item name="android:"></item>
+    </style>
+    
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.NoActionBar"></style>
+
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
+</resources>

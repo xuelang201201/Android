@@ -1,0 +1,180 @@
+package cn.tedu.chat;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity implements View.OnClickListener {
+
+	private Button btnConnect;
+	private Button btnSend;
+	private EditText etIP;
+	private EditText etSendMessage;
+	private ArrayAdapter<String> adapter;
+	private List<String> messages;
+	private ListView lvMessages;
+	private Handler handler;
+	private Socket socket;
+	private DataInputStream dis;
+	private DataOutputStream dos;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		// 初始化控件
+		setViews();
+		
+		// 为按钮配置监听器
+		setListeners();
+		
+		// 设置Handler
+		handler = new InnerHandler();
+
+		// 配置适配器
+		setAdapter();
+	}
+
+	public static final int HANDLER_CONNECT_SUCCESS = 1;
+	public static final int HANDLER_MESSAGE_RECEIVED = 2;
+	
+	private class InnerHandler extends Handler {
+		
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case HANDLER_CONNECT_SUCCESS:
+				// 连接成功
+				Toast.makeText(MainActivity.this, "恭喜，连接成功", Toast.LENGTH_LONG).show();
+				// 更新UI
+				etIP.setEnabled(false); // 不可用
+				btnConnect.setEnabled(false); // 不可用
+				break;
+
+			case HANDLER_MESSAGE_RECEIVED:
+				// 接收到了消息
+				String message = (String) msg.obj;
+				// 更新数据源和adapter
+				messages.add(message);
+				adapter.notifyDataSetChanged();
+				break;
+			}
+		}
+		
+	}
+	
+	// 初始化控件
+	private void setViews() {
+		btnConnect = (Button) findViewById(R.id.btn_connect);
+		btnSend = (Button) findViewById(R.id.btn_send);
+		etIP = (EditText) findViewById(R.id.et_IP);
+		etSendMessage = (EditText) findViewById(R.id.et_send_message);
+		lvMessages = (ListView) findViewById(R.id.lv_message);
+	}
+
+	// 为按钮配置监听器
+	private void setListeners() {
+		btnConnect.setOnClickListener(this);
+		btnSend.setOnClickListener(this);
+	}
+ 	
+	// 配置适配器
+	private void setAdapter() {
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
+		messages = new ArrayList<String>();
+		lvMessages.setAdapter(adapter);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_connect: // 建立连接
+			new Thread() {
+				public void run() {
+					try {
+						connect();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+			break;
+
+		case R.id.btn_send: // 发送消息
+			new Thread() {
+				public void run() {
+					try {
+						sendMessage();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+			break;
+		}
+	}
+	
+	/**
+	 * 建立连接
+	 * 工作线程中执行
+	 * @throws IOException 
+	 */
+	private void connect() throws IOException {
+		String ip = etIP.getText().toString();
+		socket = new Socket(ip, 8000);
+		// 如果没有出异常，连接成功
+		dis = new DataInputStream(socket.getInputStream());
+		dos = new DataOutputStream(socket.getOutputStream());
+		// 提示用户连接成功
+		handler.sendEmptyMessage(HANDLER_CONNECT_SUCCESS);
+		// 启动读取消息的工作线程
+		new ReadThread().start();
+	}
+	
+	/**
+	 * 该线程用于读取dis中的内容
+	 * 一旦读到服务端返回的消息，
+	 *发消息给主线程  更新UI
+	 */
+	class ReadThread extends Thread {
+		
+		@Override
+		public void run() {
+			try {
+				while (true) { // 不断读取
+					String message = dis.readUTF();
+					// 把消息交给handler更新
+					Message msg = new Message();
+					msg.what = HANDLER_MESSAGE_RECEIVED;
+					msg.obj = message;
+					handler.sendMessage(msg);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
+	private void sendMessage() throws IOException {
+		String text = etSendMessage.getText().toString();
+		dos.writeUTF("小明：" + text);
+		dos.flush();
+	}
+}

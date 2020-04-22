@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ChoosePicTest</string>
+    <string name="take_photo">拍照</string>
+    <string name="choose_from_album">从相册中选择</string>
+</resources>

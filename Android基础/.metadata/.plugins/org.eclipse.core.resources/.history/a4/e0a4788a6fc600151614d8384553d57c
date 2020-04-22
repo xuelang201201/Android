@@ -1,0 +1,50 @@
+package cn.tedu.listview_baseadapter;
+
+import java.util.List;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+public class ContactAdapter extends BaseAdapter {
+
+	/**
+	 * 数据源：联系人的数据List的集合
+	 */
+	private List<Contact> contacts;
+	/**
+	 * 上下文对象
+	 */
+	private Contact contact;
+	
+	/**
+	 * 构造方法
+	 * @param contacts 数据源：联系人的数据的List集合
+	 */
+	public ContactAdapter(Contact contact, List<Contact> contacts) {
+		this.contact = contact;
+		this.contacts = contacts;
+	}
+	
+	@Override
+	public int getCount() {
+		return 0;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		return null;
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// 无视
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// 无视
+		return 0;
+	}
+}

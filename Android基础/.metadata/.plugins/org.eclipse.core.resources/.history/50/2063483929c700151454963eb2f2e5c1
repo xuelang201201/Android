@@ -1,0 +1,108 @@
+package cn.tedu.listview_section;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class ContactAdapter extends BaseAdapter {
+
+	private List<Contact> contacts;
+
+	private Context context;
+
+	public void setContacts(List<Contact> contacts) {
+		if (contacts == null) {
+			contacts = new ArrayList<Contact>();
+		}
+		this.contacts = contacts;
+	}
+
+	public void setContext(Context context) {
+		if (context == null) {
+			throw new IllegalArgumentException("参数Context不可以为null！！！");
+		}
+		this.context = context;
+	}
+
+	public ContactAdapter(Context context, List<Contact> contacts) {
+		super();
+		this.contacts = contacts;
+		this.context = context;
+	}
+
+	@Override
+	public int getCount() {
+		//返回数据源的数量
+		return contacts.size();
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		//1.获取列表项的数据
+		Contact contact = contacts.get(position);
+		//2.获取显示列表项的View对象，通过模板加载得到
+		LayoutInflater inflater = LayoutInflater.from(context);
+		View view = inflater.inflate(R.layout.contact_item, null);
+		//3.组装数据中的各个属性与View对象中的各个控件
+		TextView sortKey = (TextView) view.findViewById(R.id.tv_contact_item_sort_key);
+		ImageView photo = (ImageView) view.findViewById(R.id.iv_contact_item_photo);
+		TextView name = (TextView) view.findViewById(R.id.tv_contact_item_name);
+		TextView number = (TextView) view.findViewById(R.id.tv_contact_item_number);
+
+		photo.setImageResource(contact.getPhoto());
+		sortKey.setText("" + contact.getName().charAt(0));
+		name.setText(contact.getName());
+		number.setText(contact.getNumber());
+		// -- 传统思路：判断是否显示分类字母 --
+		// 逻辑：
+		// 1) 第1条数据(position=0)一定显示
+		// 2) 与上一条首字母相同，则不显示，反之，则显示
+		
+		/* 以下是精简版代码 */
+		/*sortKey.setVisibility(View.VISIBLE);
+		int currentSection = contact.getName().charAt(0);
+		if (position != 0 && contacts.get(position - 1).getName().charAt(0) == currentSection) {
+			sortKey.setVisibility(View.GONE);
+		}*/
+
+		/* 以下是一般代码 */
+		/*if(position == 0) {
+			// 显示
+			sortKey.setVisibility(View.VISIBLE);
+		} else {
+			// 判断首字母
+			int lastSection = contacts.get(position - 1).getName().charAt(0);
+			int currentSection = contact.getName().charAt(0);
+			if(lastSection == currentSection) {
+				sortKey.setVisibility(View.GONE);
+			} else {
+				sortKey.setVisibility(View.VISIBLE);
+			}
+		}*/
+
+		//4.返回组装数据后的View对象
+		return view;
+	}
+	
+	
+
+	//为Position(位置)获取Section(首字母)：获取某个位置上应该出现的首字母
+	@Override
+	public Object getItem(int position) {
+		//（无视）
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		//（无视）
+		return 0;
+	}
+}

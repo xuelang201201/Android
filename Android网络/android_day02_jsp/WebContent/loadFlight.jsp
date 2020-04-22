@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/xml; charset=utf-8" pageEncoding="utf-8"	import="entity.*, java.util.*"%><?xml version="1.0" encoding="UTF-8"?>
+<% // 模拟查询数据库后，获得的航班信息
+	List<Flight> flights = new ArrayList<Flight>();
+	flights.add(new Flight(1, "No.9527", "北京", "上海", 899,"2016-03-01"));
+	flights.add(new Flight(2, "No.9521", "北京", "成都", 900,"2016-03-01"));
+	flights.add(new Flight(3, "No.9522", "上海", "北京", 833,"2016-03-01"));
+	flights.add(new Flight(4, "No.9523", "上海", "成都", 793,"2016-03-02"));
+	flights.add(new Flight(5, "No.9524", "北京", "成都", 995,"2016-03-02"));
+	flights.add(new Flight(6, "No.9525", "成都", "上海", 789,"2016-03-02"));
+	flights.add(new Flight(7, "No.9526", "成都", "上海", 659,"2016-03-02"));
+	flights.add(new Flight(8, "No.9528", "北京", "上海", 899,"2016-03-03"));
+	flights.add(new Flight(9, "No.9529", "北京", "成都", 909,"2016-03-03"));
+	flights.add(new Flight(10, "No.9520", "北京", "上海", 790,"2016-03-04"));
+	flights.add(new Flight(11, "No.9501", "北京", "上海", 634,"2016-03-04"));
+	flights.add(new Flight(12, "No.9502", "成都", "上海", 734,"2016-03-04"));
+	flights.add(new Flight(13, "No.9503", "北京", "上海", 689,"2016-03-05"));
+	flights.add(new Flight(14, "No.9504", "上海", "北京", 799,"2016-03-05"));
+	flights.add(new Flight(15, "No.9505", "成都", "上海", 898,"2016-03-05"));
+	flights.add(new Flight(16, "No.9506", "北京", "上海", 899,"2016-03-06"));
+	flights.add(new Flight(17, "No.9507", "北京", "成都", 579,"2016-03-06"));
+	flights.add(new Flight(18, "No.9508", "北京", "上海", 609,"2016-03-06"));
+	
+	// 把数据库中查到的数据以xml的形式
+	// 输出给客户端
+%>    
+<flights>
+<%
+	//获取date参数
+	String date=request.getParameter("date");
+  	String num = request.getParameter("number");
+	for (int i = 0; i < flights.size(); i++) {
+		Flight f = flights.get(i);
+		if (date != null && !date.equals(f.getDate())) {
+			continue;
+		}
+		if (num != null && !num.equals(f.getNumber())) {
+			continue;
+		}
+%>	
+<flight>
+		<id><%=f.getId() %></id>
+		<number><%=f.getNumber() %></number>
+		<from><%=f.getFrom() %></from>
+		<to><%=f.getTo() %></to>
+		<price><%=f.getPrice() %></price>
+		<date><%=f.getDate() %></date>
+	</flight>
+<%} %>
+</flights>

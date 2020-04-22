@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEmpActivity" >
+
+    <TextView
+        android:id="@+id/tv_add_emp_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#519032"
+        android:gravity="center"
+        android:text="注册"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_login_emp_username"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_add_emp_title"
+        android:gravity="center"
+        android:text="用户名"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_login_emp_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_login_emp_username"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_add_emp_title"
+        android:layout_toRightOf="@+id/tv_login_emp_username"
+        android:ems="10"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tv_login_emp_pwd"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_login_emp_username"
+        android:gravity="center"
+        android:text="密码"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_login_emp_code"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_login_emp_pwd"
+        android:layout_toLeftOf="@+id/et_login_emp_pwd"
+        android:gravity="center"
+        android:text="重复密码"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_login_emp_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_login_emp_pwd"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tv_login_emp_pwd"
+        android:layout_toRightOf="@+id/tv_login_emp_pwd"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:singleLine="true" />
+
+    <RadioGroup
+        android:id="@+id/rg_add_emp_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_login_emp_code"
+        android:layout_toRightOf="@+id/tv_login_emp_code"
+        android:orientation="horizontal" >
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rg_add_emp_gender"
+        android:layout_alignLeft="@+id/rg_add_emp_gender"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/btn_login_emp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="98dp"
+        android:onClick="doClick"
+        android:text="登录"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/rg_add_emp_gender"
+        android:layout_toLeftOf="@+id/rg_add_emp_gender"
+        android:gravity="center"
+        android:text="真实姓名"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/EditText02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TextView01"
+        android:layout_alignLeft="@+id/rg_add_emp_gender"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/EditText03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EditText02"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/EditText02"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/EditText03"
+        android:gravity="center"
+        android:text="邮箱"
+        android:inputType="textEmailAddress"
+        android:textSize="18sp" />
+
+</RelativeLayout>

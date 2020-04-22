@@ -1,0 +1,8 @@
+package cn.tedu.musiconline.util;
+
+/**
+ * 发送请求的工具类
+ */
+public class HttpUtils {
+	
+}

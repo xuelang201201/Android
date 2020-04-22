@@ -1,0 +1,109 @@
+package cn.tedu.checkbox;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+
+	private CheckBox cbCheckAll;
+	private CheckBox cbPhoto01;
+	private CheckBox cbPhoto02;
+	private CheckBox cbPhoto03;
+	private CheckBox cbPhoto04;
+	private CheckBox cbPhoto05;
+	private CheckBox cbPhoto06;
+	private CheckBox cbPhoto07;
+	private Button btnSubmit;
+	
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		cbCheckAll = (CheckBox)findViewById(R.id.cb_check_all);
+		cbPhoto01 = (CheckBox)findViewById(R.id.cb_photo_1);
+		cbPhoto02 = (CheckBox)findViewById(R.id.cb_photo_2);
+		cbPhoto03 = (CheckBox)findViewById(R.id.cb_photo_3);
+		cbPhoto04 = (CheckBox)findViewById(R.id.cb_photo_4);
+		cbPhoto05 = (CheckBox)findViewById(R.id.cb_photo_5);
+		cbPhoto06 = (CheckBox)findViewById(R.id.cb_photo_6);
+		cbPhoto07 = (CheckBox)findViewById(R.id.cb_photo_7);
+		btnSubmit = (Button)findViewById(R.id.btnSubmit);
+		
+		InnerOnClickListener listener = new InnerOnClickListener();
+		btnSubmit.setOnClickListener(listener);
+		
+	}
+	
+	private class InnerOnClickListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			//准备提示的文字
+			String result = "";
+			
+			boolean flag1 = false;
+			boolean flag2 = false;
+			boolean flag3 = false;
+			boolean flag4 = false;
+			boolean flag5 = false;
+			boolean flag6 = false;
+			boolean flag7 = false;
+			
+			if(cbCheckAll.isChecked()) {
+				flag1 = true;
+				flag2 = true;
+				flag3 = true;
+				flag4 = true;
+				flag5 = true;
+				flag6 = true;
+				flag7 = true;
+			}
+			
+			
+			
+			//根据CheckBox选中状态,决定是否提示
+			
+			if(cbPhoto01.isChecked()) {
+				flag1 = true;
+				result += cbPhoto01.getText().toString() + " ";
+			}
+			
+			
+			if(cbPhoto02.isChecked()) {
+				flag2 = true;
+				result += cbPhoto02.getText().toString() + " ";
+			}
+			if(cbPhoto03.isChecked()) {
+				flag3 = true;
+				result += cbPhoto03.getText().toString() + " ";
+			}
+			if(cbPhoto04.isChecked()) {
+				flag4 = true;
+				result += cbPhoto04.getText().toString() + " ";
+			}
+			if(cbPhoto05.isChecked()) {
+				flag5 = true;
+				result += cbPhoto05.getText().toString() + " ";
+			}
+			if(cbPhoto06.isChecked()) {
+				flag6 = true;
+				result += cbPhoto06.getText().toString() + " ";
+			}
+			if(cbPhoto07.isChecked()) {
+				flag7 = true;
+				result += cbPhoto07.getText().toString() + " ";
+			}
+			
+			//提示文字
+			Toast.makeText(MainActivity.this, result.trim(), Toast.LENGTH_LONG).show();
+		}
+	}
+}

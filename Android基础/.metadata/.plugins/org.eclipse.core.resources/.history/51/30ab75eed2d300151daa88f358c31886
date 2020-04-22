@@ -1,0 +1,32 @@
+package cn.tedu.aidl_server;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.util.Log;
+
+public class WorkService extends Service {
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		InnerBinder binder = new InnerBinder();
+		return binder;
+	}
+	
+	private class InnerBinder extends IMusicPlayer.Stub {
+
+		@Override
+		public void play() {
+			Log.d("tedu", "WorkService$InnerBinder.play()");
+		}
+
+		@Override
+		public void pause() throws RemoteException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<listener>
+		<listener-class>web.WebInitListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>userAction</servlet-name>
+		<servlet-class>web.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userAction</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>updateEmp</servlet-name>
+		<servlet-class>web.UpdateEmpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateEmp</servlet-name>
+		<url-pattern>/updateEmp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>showEmp</servlet-name>
+		<servlet-class>web.ShowEmpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showEmp</servlet-name>
+		<url-pattern>/showEmp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>delEmp</servlet-name>
+		<servlet-class>web.DelEmpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delEmp</servlet-name>
+		<url-pattern>/delEmp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>listEmp</servlet-name>
+		<servlet-class>web.ListEmpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listEmp</servlet-name>
+		<url-pattern>/listEmp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addEmp</servlet-name>
+		<servlet-class>web.AddEmpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addEmp</servlet-name>
+		<url-pattern>/addEmp</url-pattern>
+	</servlet-mapping>
+
+</web-app>

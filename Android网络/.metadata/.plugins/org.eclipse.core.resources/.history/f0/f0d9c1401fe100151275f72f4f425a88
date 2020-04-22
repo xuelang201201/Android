@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEmpActivity" >
+
+    <TextView
+        android:id="@+id/tv_add_emp_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#519032"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_login_emp_username"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_add_emp_title"
+        android:gravity="center"
+        android:text="账号"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_login_emp_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_login_emp_username"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_add_emp_title"
+        android:layout_toRightOf="@+id/tv_login_emp_username"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tv_login_emp_pwd"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_login_emp_username"
+        android:gravity="center"
+        android:text="密码"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_login_emp_code"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_login_emp_pwd"
+        android:layout_toLeftOf="@+id/et_login_emp_pwd"
+        android:gravity="center"
+        android:text="验证码"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_login_emp_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_login_emp_code"
+        android:layout_alignTop="@+id/tv_login_emp_code"
+        android:layout_toLeftOf="@+id/iv_login_emp_code"
+        android:layout_toRightOf="@+id/tv_login_emp_code"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/et_login_emp_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_login_emp_pwd"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tv_login_emp_pwd"
+        android:layout_toRightOf="@+id/tv_login_emp_pwd"
+        android:ems="10"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <RadioGroup
+        android:id="@+id/rg_add_emp_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_login_emp_code"
+        android:layout_toRightOf="@+id/tv_login_emp_code"
+        android:orientation="horizontal" >
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_login_emp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/rg_add_emp_gender"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:onClick="doClick"
+        android:text="登录"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/iv_login_emp_code"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/et_login_emp_pwd"
+        android:src="@drawable/ic_launcher" />
+
+</RelativeLayout>

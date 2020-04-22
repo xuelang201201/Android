@@ -1,0 +1,16 @@
+package tarena.day1905;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class Test2 {
+	public static void main(String[] args) {
+		ObjectInputStream in = new ObjectInputStream(new FileInputStream("d:/abc/f7"));
+		
+		Student stu = (Student) in.readObject();
+		
+		System.out.println(stu);
+		
+		in.close();
+	}
+}

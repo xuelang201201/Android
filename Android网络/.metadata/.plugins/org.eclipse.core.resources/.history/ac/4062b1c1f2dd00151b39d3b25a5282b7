@@ -1,0 +1,20 @@
+package cn.tedu.custom_view;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity {
+	
+	private ImageView ivImage;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		ivImage = (ImageView) findViewById(R.id.iv_image);
+		
+		findViewById(R.id.btn_draw).setOnClickListener(this);
+	}
+}

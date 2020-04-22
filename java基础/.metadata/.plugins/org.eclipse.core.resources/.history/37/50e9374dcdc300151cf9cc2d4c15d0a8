@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<email date="2016-1-26" time="9:33:20">
+	<from>aaa@aaa.com</from>
+	<to>
+		<to-email>bbb@bbb.com</to-email>
+		<to-email>ccc@ccc.com</to-email>
+		<to-email>ddd@ddd.com</to-email>
+	</to>
+	<subject>Hello xml</subject>
+	<body>
+		&gt;&gt;Hello xml！！！&lt;&lt;
+		你好埃克斯爱慕哎呦！！
+		<![CDATA[
+		>>Hello xml!!!<<
+		>>你好埃克斯爱慕哎呦！！<<
+		]]>
+	</body>
+</email>

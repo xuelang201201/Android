@@ -1,0 +1,7 @@
+package cn.tedu.musiconline.util;
+
+import org.apache.http.HttpEntity;
+
+public class HttpUtils {
+	
+}

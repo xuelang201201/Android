@@ -1,0 +1,36 @@
+package cn.tedu.custom_view;
+
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity implements View.OnClickListener {
+	
+	private ImageView ivImage;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		ivImage = (ImageView) findViewById(R.id.iv_image);
+		
+		findViewById(R.id.btn_draw).setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// 准备新的Bitmap
+		Bitmap bm = Bitmap.createBitmap(300, 200, Config.ARGB_8888);
+		// 将Bitmap应用到Canvas
+		Canvas canvas = new Canvas(bm);
+		// 创建画笔
+		Paint paint = new Paint();
+		
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;IMusicPlayer.aidl&apos; to &apos;跨进程绑定Service-客户端/src/cn.tedu.aidl_server&apos;&#x0D;&#x0A;- Original project: &apos;跨进程绑定Service-客户端&apos;&#x0D;&#x0A;- Destination element: &apos;跨进程绑定Service-客户端/src/cn.tedu.aidl_server&apos;&#x0D;&#x0A;- Original element: &apos;IMusicPlayer.aidl&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="/src&lt;cn.tedu.aidl_server" element1="src/cn/tedu/aidl_client/IMusicPlayer.aidl" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1455533670053" units="0" version="1.0"/>
+</session>

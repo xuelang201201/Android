@@ -1,0 +1,85 @@
+package cn.tedu.weather.entity;
+
+import java.util.List;
+
+public class MyWeather {
+	String reason;
+	Result result;
+	int error_code;
+	
+	public static class Result {
+		Data data;
+		
+		public static class Data {
+			Realtime realtime;
+			Life life;
+			List<Weather> weather;
+			PM25 pm25;
+			String date;
+			int isForeign;
+			
+			public static class Realtime {
+				Wind wind;
+				String time;
+				Weather weather;
+				long dataUptime;
+				String date;
+				String city_code;
+				String city_name;
+				int week;
+				String moon;
+				
+				public static class Wind {
+					String windspeed;
+					String direct;
+					String power;
+					String offset;
+				}
+				
+				public static class Weather {
+					String humidity;
+					String img;
+					String info;
+					String temperature;
+				}
+			}
+			
+			public static class Life {
+				String date;
+				Info info;
+				public static class Info {
+					List<String> kongtiao;
+					List<String> yundong;
+					List<String> ziwaixian;
+					List<String> ganmao;
+					List<String> xiche;
+					List<String> wuran;
+					List<String> chuanyi;
+				}
+			}
+			
+			public static class Weather {
+				String date;
+				Info info;
+				String week;
+				String nongli;
+				public static class Info {
+					List<String> night;
+					List<String> day;
+				}
+			}
+			
+			public static class PM25 {
+				String key;
+				int show_desc;
+				Pm pm25;
+				String dateTime;
+				String cityName;
+				
+				public static class Pm25 {
+					
+				}
+			}
+		}
+	}
+}

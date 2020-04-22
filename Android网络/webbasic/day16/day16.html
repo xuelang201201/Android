@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>day16.html</title>
+<script type="text/javascript">
+//声明Person类型
+function Person(name, age) {
+	this.name = name;
+	this.age = age;
+	this.aihao = ["吃", "喝", "玩", "乐"];
+	this.speakSelf = function() {
+		alert("我叫：" + this.name +
+			"\n我今年" + this.age + "岁了" +
+			"\n我喜欢" + this.aihao.toString());
+	};
+}
+
+function doClick() {
+	var p = new Person("张三", 5);
+	p.speakSelf();
+}
+
+function doClick2() {
+	var obj = {
+			"name" : "zs",
+			"age" : 5,
+			"aihao" : ["c", "h", "w"],
+			"school" : {
+				"name" : "Suse",
+				"loc" : "BJ"
+			},
+			"speakSelf" : function() {
+				alert(this.name + ", " + this.age);
+			}
+	};
+	obj.speakSelf();
+}
+
+function doClick3() {
+	var animal = new Dog();
+	animal.eat("骨头");
+}
+
+// 声明父类
+function Animal(){}
+Animal.prototype.nickname = "小动物";
+Animal.prototype.weight = 10;
+Animal.prototype.eat = function(food) {
+	alert("小动物正在吃："+food);
+};
+// 声明子类
+function Dog() {}
+// 子类继承父类
+Dog.prototype = new Animal();
+// 子类重写父类的方法
+Dog.prototype.eat = function(food) {
+	alert("我正在舔着：" + food);
+};
+
+function doClick4() {
+	var c = new Circle;
+	c.getArea();
+}
+
+function Point() {}
+Point.prototype.x = 5;
+Point.prototype.y = 5;
+
+function Shape() {
+}
+Shape.prototype.point = new Point();
+Shape.prototype.getArea = function() {};
+
+function Circle() {}
+Circle.prototype = new Shape();
+Circle.prototype.r = 10;
+Circle.prototype.getArea = function() {
+	alert("该圆：圆心："+"("+this.point.x+","+this.point.y+")"+
+			"\n该圆的面积：" +this.r*this.r*Math.PI);
+}
+
+</script>
+</head>
+<body>
+	<a href="javascript:;" onclick = "doClick4()">测试JS面向对象(案例)</a>
+	<hr />
+	<a href="javascript:;" onclick = "doClick3()">测试JS面向对象(继承及多肽)</a>
+	<hr />
+	<a href="javascript:;" onclick = "doClick2()">测试JS面向对象(JSON)</a>
+	<hr />
+	<a href="javascript:;" onclick = "doClick()">测试JS面向对象</a>
+</body>
+</html>

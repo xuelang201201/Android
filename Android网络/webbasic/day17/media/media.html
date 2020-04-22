@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>媒体标签media.html</title>
+		<style type="text/css">
+			video {
+				border: 2px solid red;
+			}
+		</style>
+		<script src="main.js" type="text/javascript" charset="UTF-8"></script>
+		<script type="text/javascript">
+			// 页面加载完毕后执行
+			function load() { // 给标签添加监听
+				$("btnPlay").addEventListener('click', function () {
+					var video=$("video");
+					if(video.paused){
+						video.play();
+					}else{
+						video.pause();
+					}
+				});
+				
+				$("btnProp").addEventListener('click', function () {
+					var video=$("video");
+					console.log("currentSrc:"+video.currentSrc);
+					console.log("currentTime:"+video.currentTime);
+					console.log("duration:"+video.duration);
+					console.log("volume:"+video.volume);
+				});
+				
+				$("btnvp").addEventListener('click', function () {
+					var vol = $("video").volume;
+					$("video").volume = vol>=1 ? 1 : vol+0.1;
+				});
+				
+				$("btnvm").addEventListener('click', function () {
+					var vol = $("video").volume;
+					$("video").volume = vol<=0 ? 0 : vol-0.1;
+				});
+				
+			}
+		</script>
+	</head>
+	<body onload="load()">
+		
+		<h2>测试视频标签的dom操作</h2>
+		<input id="btnPlay" type="button" value="暂停/开始" />
+		<input id="btnProp" type="button" value="属性获取" />
+		<input id="btnvp" type="button" value="音量+" />
+		<input id="btnvm" type="button" value="音量-" />
+		<br /><br />
+		<video id="video" width="420" style="margin-top:15px;">
+		    <source src="http://w3school.com.cn/example/html5/mov_bbb.mp4" type="video/mp4" />
+		    <source src="http://w3school.com.cn/example/html5/mov_bbb.ogg" type="video/ogg" />
+		    Your browser does not support HTML5 video.
+	  	</video>
+
+		<h2>测试视频标签</h2>
+		
+		<!--
+		<video width="600" >
+			<source src="myvideo.mp4" type="video/mp4"></source>
+			<source src="myvideo.ogv" type="video/ogg"></source>
+			<source src="myvideo.webm" type="video/webm"></source>
+			<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+				<param name="movie" value="myvideo.swf" />
+				<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+			</object>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+		</video>
+        -->
+		
+		<video
+			width="600px"
+			loop="true"
+			preload="auto"
+			controls="controls"
+			src="Asher Book - Here With You.mp3"
+			autoplay="autoplay"></video>
+	
+		<h2>测试音频标签</h2>
+		<audio 
+			loop="true"
+			preload="auto"
+			controls="controls"
+			src="尹美莱 - Always.mp3">
+		</audio>
+	</body>
+</html>

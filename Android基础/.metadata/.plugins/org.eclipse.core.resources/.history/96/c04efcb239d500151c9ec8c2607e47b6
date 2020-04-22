@@ -1,0 +1,8 @@
+package cn.tedu.music_player_3.util;
+
+public interface Consts {
+	/**
+	 * Activity发出的广播：播放或暂停
+	 */
+	
+}

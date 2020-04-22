@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css3动画 animation.html</title>
+		<style type="text/css">
+			/*定义动画执行规则*/
+			@-webkit-keyframes anim3 {
+				0% {
+					background: deepskyblue;
+					-webkit-transform: rotate(0deg);
+					left: 0px;
+				}
+				20% {
+					background: lightseagreen;
+					-webkit-transform: rotate(30deg);
+					left: 0px;
+				}
+				45% {
+					background: mediumpurple;
+					-webkit-transform: rotate(0deg);
+					left: 600px;
+				}
+				65% {
+					background: mediumpurple;
+					-webkit-transform: rotate(0deg);
+					left: 600px;
+				}
+				100% {
+					background: deepskyblue;
+					-webkit-transform: rotate(-360deg);
+					left: 0px;
+				}
+			}
+			
+			
+			@-webkit-keyframes anim2 {
+				0% {background: deepskyblue;}
+				25% {background: red;}
+				50% {background: blue;}
+				75% {background: green;}
+				100% {background: yellow;}
+			}
+			
+			
+			@-webkit-keyframes anim1 {
+				from {
+					width: 200px;
+					background: red;
+				}
+				to {
+					width: 800px;
+					background: yellow;
+				}
+			}
+			
+			.d1 {
+				width: 200px;
+				height: 100px;
+				background: deepskyblue;
+			}
+			.d1:hover {
+				-webkit-animation: anim2 10s;
+			}
+				
+			.d2 {
+				width: 100px;
+				height: 60px;
+				color: white;
+				font-weight: bolder;
+				font-family: "微软雅黑";
+				text-align: center;
+				line-height: 60px;
+				background: deepskyblue;
+				border-radius: 10px;
+				position: relative;
+				/*-webkit-animation: anim3 5s ease 1s infinite alternate;*/
+				/*-webkit-animation-iteration-count: ;
+				-webkit-animation-delay: ;
+				-webkit-animation-timing-function: ;
+				-webkit-animation-direction: ;*/
+			}
+		</style>
+		<script src="main.js" type="text/javascript" charset="UTF-8"></script>
+		<script type="text/javascript">
+			function load() {
+				// 给d2添加监听（动画执行完毕监听）
+				$("d2").addEventListener("webkitAniamtionEnd", function() {
+					// 移除animation属性
+					$("d2").style.webkitAnimation="";
+				});
+				
+				// 给按钮添加监听
+				$("btn").addEventListener('click', function() {
+					// 给div添加css样式animation
+					$("d2").style.webkitAnimation="anim3 5s";
+				});
+			}
+		</script>
+	</head>
+	<body onload="load()">
+		<br /><br /><br />
+		<div class="d2" id="d2">
+			css3动画
+		</div>
+		<br /><br /><br /><br />
+		<input type="button" id="btn" value="点我执行动画" />
+		<br /><br /><br /><br /><br />
+		<div class="d1">
+		</div>
+	</body>
+</html>

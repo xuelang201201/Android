@@ -1,0 +1,5 @@
+package cn.tedu.test;
+
+public class WorkThread extends java.lang.Thread {
+	
+}

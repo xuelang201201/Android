@@ -1,0 +1,113 @@
+package cn.tedu.listview_baseadapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.tedu.listview_simpleadapter.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+
+public class MainActivity extends Activity {
+	
+	/**
+	 * 控件：显示联系人列表的ListView
+	 */
+	private ListView lvContacts;
+	
+	/**
+	 * 联系人列表的Adapter
+	 */
+	private BaseAdapter adapter;
+	
+	/**
+	 * 数据源：联系人的数据的List集合
+	 */
+	private List<Contact> contacts;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		//初始化ListView
+		lvContacts = (ListView) findViewById(R.id.lv_contacts);
+		
+		//初始化联系人的数据源
+		contacts = new ArrayList<Contact>();
+		Contact contact;
+		
+		contact = new Contact("梅西", "01012345610", R.drawable.headimage01);
+		contacts.add(contact);
+		
+		contact = new Contact("内马尔", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("苏亚雷斯", "01012345609", R.drawable.headimage06);
+		contacts.add(contact);
+		
+		contact = new Contact("哈维", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("伊涅斯塔", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("罗纳尔多", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("贝尔", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("本泽马", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("伊布", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("厄齐尔", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("阿奎罗", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("迪玛利亚", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("迪巴拉", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("博格巴", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("格策", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("穆勒", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("奥巴梅杨", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("罗伊斯", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("桑切斯", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("内马尔", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("内马尔", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		contact = new Contact("内马尔", "01012345611", R.drawable.headimage02);
+		contacts.add(contact);
+		
+		
+		
+		//为ListView配置Adapter
+		lvContacts.setAdapter(adapter);
+	}
+}

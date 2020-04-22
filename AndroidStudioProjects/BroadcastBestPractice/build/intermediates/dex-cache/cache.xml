@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_8d38cb1a31c38e688ad8c79802bc164cacdc1178\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_4d81c246cf2b12d28178da5632cd687a713f07d7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_c6a9a551b04273892d246513c2f012cf7524f7b0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_b789d858daee8c9c31d34886292311ed9d17a6e1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.0.1_88b52dc56954bb9c012eeff1820c088f60376e80\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.1_3e1c3e7b326321aa4953800d3d33cffd617b48f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.1_50ac971df55b1996f9f0ebb2b7ca85bd2c17c2d2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_e0d1207bb573aad70d382d8692de87b98558856e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_3147bf5f1875245e1220012c2fdb5fb743ed4f97\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8e55ab87babef6f21b7f929c4d244c07cc4adc75">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_21fb6ecf0cd1153b2809953bd3e094de3a95787f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_d78ea82f81c386c5b4d05e12f6513ab4e6b1bd31\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5e76e20b97c316a07324343a00cde2bf196a5f4f">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_3951e9ec0cba5aed81324204eab3faf6edc06149\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_958b49b20cfaf07a4a646842a7e3b28a6257c0bc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.1_3e4b05a7f05e4ad582699bf0181ea86449ad0b80\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_9e95aede2474b99daadb8c542f78d647864fd7da\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Android_Environment\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_f4d61d6332cbd9b1ca994979b53ec1eb732cb7a1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_45673a03d514806ea0b2ee41f83a964d4349c33b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_7ef3ad15547e8d01fb31dbe4d0cf0d2e12220f16\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_df96a867a5ec92a614d1d2af69059721575a9761\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="G:\Android\AndroidStudioProjects\BroadcastBestPractice\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_2e8f0c6b3965e787667e4911668a78e8e0ac7f47\classes.dex" />
+    </item>
+
+</items>

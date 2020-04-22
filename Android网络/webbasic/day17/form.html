@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form.html</title>
+	</head>
+	<body>
+		
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+		  <polygon points="100,10 40,180 190,60 10,60 160,180"
+		  style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+		</svg>
+		
+		<h3>测试新增的表单type属性</h3>
+		<form action="regist.do" method="get">
+			email: <input required="required" placeholder="请填写email" name="email" type="email" />
+			<br /><br />
+			url: <input placeholder="http://www.xx.com" name="url" type="url" />
+			<br /><br />
+			number: <input min="0" max="100" step="9" name="number" type="number" />
+			<br /><br />
+			range: <input step="10" name="range" type="range" />
+			<br /><br />
+			date: <input name="date" type="date" />
+			<br /><br />
+			month: <input name="month" type="month" />
+			<br /><br />
+			week: <input name="week" type="week" />
+			<br /><br />
+			time: <input name="time" type="time" />
+			<br /><br />
+			datetime-local: <input name="datetime" type="datetime-local" />
+			<br /><br />
+			search: <input title="11位数字的电话号码" pattern="\d{11}" name="search" type="search" />
+			<br /><br />
+			color: <input name="color" type="color" />
+			<br /><br />
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+</html>
+
+
+

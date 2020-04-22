@@ -1,0 +1,14 @@
+package tarena.day1905;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class Test1 {
+	public static void main(String[] args) throws Exception {
+		Student s = new Student(37,"ÕÅÈý","ÄÐ",21,177,73);
+		
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("d:/abc/"));
+	}
+}

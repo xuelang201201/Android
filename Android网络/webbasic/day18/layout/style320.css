@@ -1,0 +1,67 @@
+/*定义css*/
+body, footer, aside, nav, article, section {
+	margin: 0px;
+	padding: 0px;
+}
+
+header {
+	width: 320px;
+	height: 70px;
+	background: deeppink;
+	margin: 10px auto;
+}
+
+nav {
+	width: 320px;
+	height: 40px;
+	background: deepskyblue;
+	margin: 0px auto;
+	margin-bottom: 10px;
+}
+
+.container {
+	width: 320px;
+	height: 1280px;
+	margin: 0px auto;
+	margin-bottom: 10px;
+}
+
+.container aside {
+	width: 320px;
+	height: 250px;
+	margin-bottom: 10px;
+	float: left;
+	background: coral;
+}
+
+.container article {
+	width: 320px;
+	height: 500px;
+	float: left;
+	background: fuchsia;
+}
+
+.container .section {
+	float: left;
+	margin-top: 10px;
+	width: 320px;
+	height: 245px;
+}
+
+.container .section section {
+	float: left;
+	width: 320px;
+	height: 250px;
+	background: firebrick;
+}
+
+#s1 {
+	margin-right: 10px;
+}
+
+footer {
+	width: 320px;
+	height: 80px;
+	background: midnightblue;
+	margin: 0px auto;
+}

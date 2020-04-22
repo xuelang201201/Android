@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CheckBox</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="cb_photo_01">照片01</string>
+    <string name="cb_photo_02">照片02</string>
+    <string name="cb_photo_03">照片03</string>
+    <string name="cb_photo_04">照片04</string>
+    <string name="cb_photo_05">照片05</string>
+    <string name="cb_photo_06">照片06</string>
+    <string name="cb_photo_07">照片07</string>
+    <string name="submit">提交</string>
+    <string name="choose_all">全选</string>
+
+</resources>

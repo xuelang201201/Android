@@ -1,0 +1,40 @@
+package cn.tedu.simple_android_thread;
+
+import java.util.Date;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+
+	private TextView tvTimer;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		tvTimer = (TextView) findViewById(R.id.tv_timer);
+		
+		InnerThread t = new InnerThread();
+		t.start();
+	}
+	
+	private class InnerThread extends Thread {
+		@Override
+		public void run() {
+			for(int i = 0; i < 3; i++) {
+				Date date = new Date();
+				tvTimer.setText("" + date);
+				
+				// Ïß³ÌÐÝÃß1Ãë
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+}

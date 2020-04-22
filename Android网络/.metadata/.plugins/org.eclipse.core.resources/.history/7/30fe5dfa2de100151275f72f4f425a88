@@ -1,0 +1,33 @@
+package cn.tedu.android_day03_ems;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.EditText;
+
+public class RegisterActivity extends Activity {
+
+	private EditText etUsername;
+	private EditText etPwd;
+	private EditText etRePwd;
+	private EditText etRealname;
+	private EditText etEmail;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_register);
+		
+		// 声明控件
+		setViews();
+	}
+
+	/**
+	 * 声明控件
+	 */
+	private void setViews() {
+		etUsername = (EditText) findViewById(R.id.et_register_emp_username);
+		etPwd = (EditText) findViewById(R.id.et_register_emp_pwd);
+		etRePwd = (EditText) findViewById(R.id.et_register_emp_repwd);
+		etRealname = (EditText) findViewById(R.id.et_register_emp_realname);
+	}
+}

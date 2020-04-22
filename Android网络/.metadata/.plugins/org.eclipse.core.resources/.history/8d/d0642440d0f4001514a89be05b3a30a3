@@ -1,0 +1,68 @@
+package cn.tedu.myy.biz;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.util.Log;
+import cn.tedu.myy.activity.ChooseActivity;
+import cn.tedu.myy.entity.PageModule;
+import cn.tedu.myy.util.GlobalConsts;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+public class PageModuleBiz {
+	
+	private Context context;
+	
+	public PageModuleBiz(Context context) {
+		this.context = context;
+	}
+	
+	public void loadAllModules() {
+		AsyncHttpClient client = new AsyncHttpClient();
+		String url = GlobalConsts.BASEURL + "loadModules.jsp";
+		client.get(url, new AsyncHttpResponseHandler() {
+			
+			@Override
+			public void onSuccess(int arg0, Header[] arg1, byte[] resp) {
+				String respText;
+				try {
+					respText = new String(resp, "UTF-8");
+					Log.i("info", "resp : " + respText);
+					ChooseActivity c = (ChooseActivity) context;
+					c.updateGridView(parseModules(respText));
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				} catch (JSONException e) {
+					Log.i("info", "JSON“Ï≥£");
+				}
+			}
+			
+			@Override
+			public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
+			}
+		});
+	}
+
+	protected List<PageModule> parseModules(String json) throws JSONException {
+		List<PageModule> modules = new ArrayList<PageModule>();
+		JSONArray ary = new JSONArray(json);
+		for (int i = 0; i < ary.length(); i++) {
+			JSONObject obj = ary.getJSONObject(i);
+			PageModule m = new PageModule();
+			m.setId(obj.getInt("id"));
+			m.setName(obj.getString("name"));
+			m.setSnapshot(obj.getString("snapshot"));
+			m.setContent(obj.getString("content"));
+		}
+		return modules;
+	}
+}

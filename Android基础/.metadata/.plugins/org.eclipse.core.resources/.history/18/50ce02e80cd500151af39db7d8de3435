@@ -1,0 +1,30 @@
+package cn.tedu.music_player_3.app;
+
+/**
+ * 歌曲信息的实体类
+ */
+public class Music {
+	private String title;
+	private String path;
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+	
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	@Override
+	public String toString() {
+		return "Music [title=" + title + ", path=" + path + "]";
+	}
+}

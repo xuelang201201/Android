@@ -1,0 +1,45 @@
+package cn.tedu.viewpager_fragment;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+
+public class MainActivity extends FragmentActivity {
+	
+	private ViewPager vpViewPager;
+	private PagerAdapter adapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		vpViewPager = (ViewPager) findViewById(R.id.vp_view_pager);
+		
+		adapter = new InnerAdapter()
+	}
+	
+	private class InnerAdapter extends FragmentPagerAdapter {
+
+		public InnerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int arg0) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public int getCount() {
+			return 3;
+		}
+		
+	}
+}

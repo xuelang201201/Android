@@ -1,0 +1,23 @@
+package tarena.day1901;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Date;
+
+public class Test1 {
+	public static void main(String[] args) throws Exception {
+		PrintStream out = new PrintStream("d:/f5");
+		
+		out.write(97);
+		out.write(98);
+		out.write(99);
+		out.println();
+		out.write(97);
+		out.write(98);
+		out.write(99);
+		out.println();
+		out.println(new Date());
+		out.close();
+	}
+}

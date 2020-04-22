@@ -1,0 +1,42 @@
+package cn.tedu.android_day18_webview;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+
+public class MainActivity extends Activity {
+
+	private WebView webView;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		// 初始化webView
+		setViews();
+		// 调用loadUrl方法 加载一张网页
+		//webView.loadUrl("http://www.baidu.com");
+		webView.loadUrl("file:///android_asset/www/form.html");
+		// 操作WebSettings属性
+		setWebSettings();
+		
+		//操作WebViewClient属性
+		setWebViewClient();
+	}
+
+	//操作WebViewClient属性
+	private void setWebViewClient() {
+		
+	}
+
+	// 操作WebSettings属性
+	private void setWebSettings() {
+		WebSettings settings = webView.getSettings();
+	}
+
+	// 初始化webView
+	private void setViews() {
+		webView = (WebView) findViewById(R.id.webView);
+	}
+}

@@ -1,0 +1,8 @@
+package com.tarena.myy.util;
+
+public class GlobalConsts {
+	
+	//public static final String BASEURL="http://123.56.138.82:8080/myy_server/";
+	public static final String BASEURL="http://192.16.44.159:8080/myy_server/";
+	
+}

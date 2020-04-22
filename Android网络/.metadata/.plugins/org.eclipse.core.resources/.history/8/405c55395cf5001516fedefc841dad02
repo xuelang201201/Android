@@ -1,0 +1,48 @@
+package cn.tedu.weather.entity;
+
+import java.util.List;
+
+public class MyWeather {
+ 	String reason;
+ 	Result result;
+ 	int error_code;
+ 	
+ 	public static class Result {
+ 		Data data;
+ 		
+ 		public static class Data {
+ 			Realtime realtime;
+ 			Life life;
+ 			List<Weather> weather;
+ 			PM25 pm25;
+ 			String date;
+ 			int isForeign;
+ 			public static class Realtime {
+ 				Wind wind;
+ 				String time;
+ 				Weather weather;
+ 				long dataUptime;
+ 				String date;
+ 				String city_code;
+ 				String city_name;
+ 				int week;
+ 				String moon;
+ 				public static class Wind {
+ 					
+ 				}
+ 				public static class Weather {
+ 					
+ 				}
+ 			}
+ 			public static class Life {
+ 				
+ 			}
+ 			public static class Weather {
+ 				
+ 			}
+ 			public static class PM25 {
+ 				
+ 			}
+ 		}
+ 	}
+}

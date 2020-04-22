@@ -1,0 +1,17 @@
+package cn.tedu.listview_arrayadapter;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+
+public class MainActivity extends Activity {
+	private ListView lvContacts;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		lvContacts = (ListView) findViewById(R.id.lv_contacts);
+	}
+}

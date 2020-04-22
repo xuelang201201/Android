@@ -1,0 +1,37 @@
+package cn.tedu.listview_simpleadapter;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+public class MainActivity extends Activity {
+
+	private ListView lvContacts;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		lvContacts = (ListView) findViewById(R.id.lv_contacts);
+		
+		
+		Context context = this;
+		
+		List<Map<String, Object>> data;
+		Map<String, Object> = new HashMap<String, >();
+		
+		
+		int resource;
+		String[] from;
+		int[] to;
+		adapter = new SimpleAdapter(context, data, resource, from, to);
+		lvContacts.setAdapter(adapter);
+	}
+}

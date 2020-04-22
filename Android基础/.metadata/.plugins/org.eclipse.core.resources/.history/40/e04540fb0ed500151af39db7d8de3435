@@ -1,0 +1,33 @@
+package cn.tedu.music_player_3.app;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Environment;
+
+import cn.tedu.music_player_3.entity.Music;
+
+class LocalMusicDao implements IDao<Music> {
+
+	@Override
+	public List<Music> getData() {
+		// 准备返回值
+		List<Music> musics = new ArrayList<Music>();
+		
+		// 检查SD卡的挂载状态
+		if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+			
+		}
+		// 检查SD卡的Music文件夹是否存在
+		// 获取Music文件夹下的文件列表
+		// 遍历文件列表
+		// 检查是否是文件
+		// 检查是否是mp3文件
+		// 创建Music对象
+		// 向Music对象中封装数据
+		// 将Music添加到返回值
+		
+		return null;
+	}
+
+}

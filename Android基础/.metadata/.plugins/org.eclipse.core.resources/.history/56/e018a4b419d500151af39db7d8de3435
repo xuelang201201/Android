@@ -1,0 +1,51 @@
+package cn.tedu.music_player_3.adapter;
+
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+
+public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
+	private Context context;
+	private LayoutInflater inflater;
+	private List<T> data;
+	
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+
+	public LayoutInflater getInflater() {
+		return inflater;
+	}
+
+	public void setInflater(LayoutInflater inflater) {
+		this.inflater = inflater;
+	}
+
+	public List<T> getData() {
+		return data;
+	}
+
+	public void setData(List<T> data) {
+		this.data = data;
+	}
+
+	@Override
+	public int getCount() {
+		return data.size();
+	}
+	
+	@Override
+	public Object getItem(int position) {
+		return null;
+	}
+	
+	@Override
+	public long getItemId(int position) {
+		return 0;
+	}
+}

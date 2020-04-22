@@ -1,0 +1,6 @@
+package cn.tedu.music_player_3.dal;
+
+public class MusicDaoFactory {
+	private MusicDaoFactory() {
+	}
+}

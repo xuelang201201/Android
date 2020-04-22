@@ -1,0 +1,10 @@
+package cn.tedu.myy.biz;
+
+import com.loopj.android.http.AsyncHttpClient;
+
+public class PageModuleBiz {
+	public void loadAllModules() {
+		AsyncHttpClient client = new AsyncHttpClient();
+		
+	}
+}

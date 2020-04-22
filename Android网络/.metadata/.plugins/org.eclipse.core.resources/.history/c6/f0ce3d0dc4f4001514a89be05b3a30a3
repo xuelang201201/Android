@@ -1,0 +1,7 @@
+package cn.tedu.myy.biz;
+
+public class PageModuleBiz {
+	public void loadAllModules() {
+		AsyncHttpClent client = new AsyncHttpClient();
+	}
+}

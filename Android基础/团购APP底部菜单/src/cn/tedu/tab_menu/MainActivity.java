@@ -1,0 +1,49 @@
+package cn.tedu.tab_menu;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+
+	private RadioGroup rgTabMenu;
+	private TextView tvContent;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		rgTabMenu = (RadioGroup)findViewById(R.id.rg_tab_menu);
+		tvContent = (TextView)findViewById(R.id.tv_content);
+
+		InnerOnCheckedChangeListener listener = new InnerOnCheckedChangeListener();
+		rgTabMenu.setOnCheckedChangeListener(listener);
+	}
+
+	private class InnerOnCheckedChangeListener implements OnCheckedChangeListener {
+
+		@Override
+		public void onCheckedChanged(RadioGroup group, int checkedId) {
+			switch (checkedId) {
+			case R.id.rb_tab_menu_deal:
+				tvContent.setText("团购");
+				break;
+
+			case R.id.rb_tab_menu_nearby:
+				tvContent.setText("附近");
+				break;
+
+			case R.id.rb_tab_menu_my:
+				tvContent.setText("我的");
+				break;
+
+			case R.id.rb_tab_menu_more:
+				tvContent.setText("更多");
+				break;
+			}
+		}
+	}
+}

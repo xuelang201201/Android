@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CriminalIntentChallenge</string>
+    <string name="crime_title_hint">为该不文明现象去一个名字。</string>
+    <string name="crime_title_label">标题</string>
+    <string name="crime_details_label">时间</string>
+    <string name="crime_solved_label">已解决</string>
+    <string name="date_picker_title">不文明现象出现的时间：</string>
+    <string name="date_or_time_pick_ok">确定</string>
+</resources>

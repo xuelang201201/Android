@@ -1,0 +1,7 @@
+package tarena.day2001;
+
+import org.xml.sax.helpers.DefaultHandler;
+
+public class EmailHandler extends DefaultHandler {
+	
+}

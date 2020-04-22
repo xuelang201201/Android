@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Array.html</title>
+<script type="text/javascript">
+	//测试数组的常用API
+	function doClick() {
+		var ary = new Array();
+		ary.push(22);
+		ary.push(9);
+		ary.push(103);
+		ary.shift();
+		ary.unshift(503);
+		ary.unshift(64);
+		ary.push(7);
+		console.log("ary:" + ary.join(","));
+		//为数组排序
+		//ary.sort(f2);
+		ary.sort(function(n1, n2) {
+			return n1 - n2;
+		});
+		console.log("ary:" + ary.join(","));
+	}
+
+	//定义排序规则
+	function f2(n1, n2) {
+		return n1 - n2;
+	}
+
+	// 测试JavaScript的函数
+	function doClick2() {
+		var r = add(100, 200);
+		alert(r);
+	}
+	
+	// JavaScript函数中没有重载，只检测函数名，不检测参数列表，如果有两个相同名称的函数，只有后一个有效
+	function add(n1, n2) {
+		return n1 - n2;
+	}
+
+	function add() {
+		var sum = 0;
+		for (i = 0; i < arguments.length; i++) {
+			sum += arguments[i];
+		}
+		return sum;
+	}
+</script>
+</head>
+<body>
+
+	<a href="javascript:;" onclick="doClick2()">测试JavaScript的函数</a>
+	<hr />
+	<a href="javascript:;" onclick="doClick()">测试数组的常用API</a>
+	<hr />
+
+</body>
+</html>

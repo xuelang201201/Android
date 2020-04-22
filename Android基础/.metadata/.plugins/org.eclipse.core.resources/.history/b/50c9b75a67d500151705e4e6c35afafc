@@ -1,0 +1,23 @@
+package cn.tedu.file_io;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends Activity {
+	
+	private EditText etContent;
+	private Button btnSave;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		etContent = (EditText) findViewById(R.id.et_content);
+		btnSave = (Button) findViewById(R.id.btn_save);
+		
+		btnSave.setOnClickListener(this);
+	}
+}
